@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./AiAssistant.css";
 
 function AIcomponent(){
+
 	const [query, setQuery] = useState("");
 	const [chatHistory, setChatHistory] = useState([]);
 	const [loading, setLoading] = useState(false);
@@ -9,21 +10,46 @@ function AIcomponent(){
 
 	//HANDLE SUBMIT
 	const handleSubmit = async () => {
-		//verify input
 		if (!query.trim()) return;
-		
-		//activate loading message
 		setLoading(true);
-		//clear previous error messages
 		setError(null);
 
-	}
+		try {
+			const response = await fetch(`/api/ai/recommendations`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ query }),
+			});
+
+			if (!response.ok) {
+				throw new Error(
+					`Server error: ${response.status} ${response.statusText}`
+				);
+			}
+
+			const data = await response.json();
+
+			setChatHistory((prev) => [
+				...prev,
+				{ role: "user", content: query },
+				{ role: "bot", content: data || "No valid response received." },
+			]);
+		} catch (err) {
+			setError("Request failed, please try again later.");
+		} finally {
+			setLoading(false);
+			setQuery("");
+		}
+	};
 
 	return(
 		<div className="AIbox">
 
 			{/* CHAT WINDOW */}
 			<div className="ChatWindow">
+				{console.log("CHATHISTORY ARRAY= ", chatHistory)}
 				{chatHistory.map((msg, idx) => (
 					<div key={idx} className={msg.role === "user" ? "user-msg" : "bot-msg"}>
 						{msg.content}
