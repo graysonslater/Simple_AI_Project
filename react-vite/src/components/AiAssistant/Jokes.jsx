@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./AiAssistant.css";
+import "./AI.css";
 
-function AIcomponent(){
+function JokeComponent(){
 
 	const [query, setQuery] = useState("");
 	const [chatHistory, setChatHistory] = useState([]);
@@ -15,7 +15,7 @@ function AIcomponent(){
 		setError(null);
 
 		try {
-			const response = await fetch(`/api/ai/recommendations`, {
+			const response = await fetch(`/api/ai/jokes`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -49,7 +49,7 @@ function AIcomponent(){
 
 			{/* CHAT WINDOW */}
 			<div className="ChatWindow">
-				{console.log("CHATHISTORY ARRAY= ", chatHistory)}
+				{console.log("Poem ARRAY= ", chatHistory)}
 				{chatHistory.map((msg, idx) => (
 					<div key={idx} className={msg.role === "user" ? "user-msg" : "bot-msg"}>
 						{msg.content}
@@ -67,13 +67,13 @@ function AIcomponent(){
 					type="text"
 					value={query}
 					onChange={(e) => setQuery(e.currentTarget.value)}
-					placeholder="Type something here..."
+					placeholder="Give me a joke idea..."
 					disabled={loading}
 				/>
-				<button onClick={handleSubmit} disabled={loading || !query.trim()}>{loading ? "Full Send..." : "Submit"}</button>
+				<button onClick={handleSubmit} disabled={loading || !query.trim()}>{loading ? "Thinking..." : "Submit"}</button>
 			</div>
 		</div>
 	)
 }
 
-export default AIcomponent;
+export default JokeComponent;

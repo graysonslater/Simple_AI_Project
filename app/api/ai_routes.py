@@ -10,14 +10,16 @@ client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
 
 ai_routes = Blueprint('ai', __name__)
 
+print("TESTING POEM AI ROUTE ACTIVIVATION")
 
-@ai_routes.route('/poems', methods=['GET']) #!note the method is post!!!
+@ai_routes.route('/poems', methods=['POST']) #!note the method is post!!!
 def get_poems():
     """
     Writes a poem
     """
     # Get input data from front end
     data = request.json
+    print("TESTING POEM DATA= ",data)
 
     # get user input from data
     print("BACKEND POEM = ",data.get('query', '') )
@@ -47,11 +49,11 @@ def get_poems():
     
     # used for errors
     except Exception as e:
-        print("EXECPT POEM TEST!!!!")
+        print("TESTING POEM EXEPTION REACHED")
         return jsonify({"error": str(e)}), 500
 
 
-@ai_routes.route('/jokes', methods=["GET"])
+@ai_routes.route('/jokes', methods=["POST"])
 def get_joke():
     """
     Tells a joke
