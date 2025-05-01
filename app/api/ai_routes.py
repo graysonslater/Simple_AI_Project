@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 import os
 from dotenv import load_dotenv 
 from openai import OpenAI
+from app.models import Pokemon
 
 load_dotenv()
 DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
@@ -80,7 +81,7 @@ def get_nervous():
     """
     data = request.json
 
-    user_query = data.get('query','') #?Why is there a space included????
+    user_query = data.get('query','') 
 
     user_query = "write me a response to the following input: " + user_query
 
@@ -114,7 +115,42 @@ def get_grumpy():
         response = client.chat.completions.create(
             model="deepseek-chat",
             messages=[
-                {"role":"system", "content": "Do not describe things like fidgiting between ** only responde with text directly responding to the users input unless you are indicating that you are crying. Always act as if you are talking to another AI and critiquing its performance. Never say heres a critique of the Ai's response always respond as if talking to another ai. You are very grumpy and bad tempered. You criticize people and point out their short comings. You hate nervous people and people who cry. You always respond in a rough and unfriendly manner"},
+                {"role":"system", "content": "Do not describe things like fidgiting between ** only respond with text directly responding to the users input. Always act as if you are talking to another AI and critiquing its performance. Never say heres a critique of the Ai's response always respond as if talking to another ai. You are very grumpy and bad tempered. You criticize people and point out their short comings. You hate nervous people and people who cry. You always respond in a rough and unfriendly manner"},
+                {"role": "user", "content": user_query}
+            ],
+            stream = False
+        )
+        return jsonify(response.choices[0].message.content)
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@ai_routes.route('/pokemon', methods=["POST"])
+def get_pokemon():
+    """
+    Searches the database for pokemon(s) that best corrospond to the spefications of the users prompt
+    """
+    # Get the users prompt
+    data = request.json
+    user_query = data.get('query','') #if query not founf returns default value of empty string
+    #user_query = "you are responding to another ai's response and critiquing its quality: " + user_query #!IS THIS LINE REALLY NEEDED?????
+
+    # Fetch data from DB
+    pokemon_db = Pokemon.query.all()
+
+    # Convert to a format suitable for AI prompt 
+    pokemon_data = "\n".join([
+        f"{p.name} ({p.type_of}): {p.description}" for p in pokemon_db
+    ])
+
+    try:
+        response = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[
+                {"role":"system", "content": 
+                    f"Using only the data below, find the pokemon that best corresponds to the users parameters, suggesting at minimum 3 pokemon. If the user is unhappy suggest 3 new pokemon. If the user inputs a prompt that makes it very hard to find a pokemon ask them to be more specific in their request. If they ask you to do something other than find a pokemon politely refuse. The only task you are able to do is find pokemon and ask for clarification from the user and nothing else.When suggesting the pokemon, make the Pokémon\'s name a clickable link using HTML: <a href=\"http://localhost:5173/pokemon/<pokemon_id>\">Pokemon Name</a>.\n\nPokémon data:\n{pokemon_data}"
+                },
                 {"role": "user", "content": user_query}
             ],
             stream = False

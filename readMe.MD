@@ -40,6 +40,12 @@ The goal of this project is to test implimenting a simple AI interface into a we
 
 * The query from a user on the frontend must be sent as "POST" fetch request otherwise the backend will not pick up the request
 
+*When using data from DB it is important to re-format that data to be more easily read by the AI model
+    *Best is to format the data into strings seperated by newlines
+        *Creates a consistent, readable structure that the AI can understand
+        *compact while still being informative
+        *easy for the AI to reference specific data when answering questions
+
 ## Backend Installation
 
 1. clone repository and open a WSL terminal

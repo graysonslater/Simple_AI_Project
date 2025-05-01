@@ -2,7 +2,6 @@ import { useState } from "react";
 import "./AI.css";
 
 function JokeComponent(){
-
 	const [query, setQuery] = useState("");
 	const [chatHistory, setChatHistory] = useState([]);
 	const [loading, setLoading] = useState(false);
