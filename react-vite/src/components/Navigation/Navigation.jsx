@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUserById } from "../../redux/session";
-import LoginModal from "../Modals/LoginModal/LoginModal/LoginModal";
+import LoginModal from "../Modals/LoginModal/LoginModal";
 import LogoutModal from "../Modals/LogoutModal/LogoutModal";
 
 import "./Navigation.css";
@@ -42,7 +42,7 @@ function Navigation(){
             {/* If user logged in Display profile button else, login button */}
             {user ? (
                 <>
-                    <NavLink className="navBarProfile" to="/" >Profile</NavLink> 
+                    <NavLink className="navBarProfile" to="/profile" >Profile</NavLink> 
                     <LogoutModal />
                 </>
             ) : (

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { thunkLogin, demoLogin } from "../../../../redux/session";
-import CustomModal from "../../../../context/CustomModal";
+import { thunkLogin, demoLogin } from "../../../redux/session";
+import CustomModal from "../../../context/CustomModal";
 
 
 export default function LoginModal(){
