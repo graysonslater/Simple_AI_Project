@@ -4,3 +4,17 @@
     align-items: center;
     padding: 10px 0;
   }
+
+.LoginModal {
+  display: flex;
+  gap: 20px; /* Adjust the space between links as needed */
+  align-items: center;
+  padding: 10px 0;
+}
+
+.LogoutModal {
+  display: flex;
+  gap: 20px; /* Adjust the space between links as needed */
+  align-items: center;
+  padding: 10px 0;
+}

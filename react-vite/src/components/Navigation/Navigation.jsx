@@ -1,8 +1,26 @@
 import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getUserById } from "../../redux/session";
+import LoginModal from "../Modals/LoginModal/LoginModal/LoginModal";
+import LogoutModal from "../Modals/LogoutModal/LogoutModal";
+
 import "./Navigation.css";
 
 function Navigation(){
-    
+    const dispatch = useDispatch();
+
+    //grab current user data 
+    const {user} = useSelector((state) => {return { user: state.session.user}});
+    console.log("NAVBAR user state= ", user)
+
+    useEffect(() => {
+        if(user){
+            dispatch(getUserById(user.id))
+        }
+        },[dispatch]);
+
+
     return(
         <div className="NavBarMain">
             <NavLink className="navBarHome" to="/" >
@@ -20,6 +38,15 @@ function Navigation(){
             <NavLink className="navBarPoke" to="/pokemon/1" >
                 Pokemon Page Test
             </NavLink>
+
+            {/* If user logged in Display profile button else, login button */}
+            {user ? (
+                <>
+                    <NavLink className="navBarProfile" to="/" >Profile</NavLink> 
+                    <LogoutModal />
+                </>
+            ) : (
+                <LoginModal />)}   
         </div>
     )
 

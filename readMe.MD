@@ -40,11 +40,17 @@ The goal of this project is to test implimenting a simple AI interface into a we
 
 * The query from a user on the frontend must be sent as "POST" fetch request otherwise the backend will not pick up the request
 
-*When using data from DB it is important to re-format that data to be more easily read by the AI model
+* When using data from DB it is important to re-format that data to be more easily read by the AI model
     *Best is to format the data into strings seperated by newlines
-        *Creates a consistent, readable structure that the AI can understand
-        *compact while still being informative
-        *easy for the AI to reference specific data when answering questions
+        * Creates a consistent, readable structure that the AI can understand
+        * compact while still being informative
+        * easy for the AI to reference specific data when answering questions
+
+* One possible solution for creating hyper links within an AI chat is to use dangerouslySetInnerHTML
+    * must be contained inside  a span which provides context
+    * ```<span dangerouslySetInnerHTML={{ __html: msg.content }} />```
+        * __html must always be the key, the value is the message containing the html
+    * a potentially dangerous solution - I should look for another way in the future!!!
 
 ## Backend Installation
 

@@ -1,10 +1,10 @@
 //Component for managing the different stores/states -- for future use
 import {legacy_createStore as createStore, applyMiddleware, compose, combineReducers,} from "redux";
-
 import thunk from "redux-thunk";
+import sessionReducer from "./session";
 
 const rootReducer = combineReducers({
-  //future reducers go here
+  session: sessionReducer
 });
 
 let enhancer;

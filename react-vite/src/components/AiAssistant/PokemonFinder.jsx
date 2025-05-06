@@ -51,10 +51,16 @@ export default function PokemonFinder(){
             {/* CHAT WINDOW */}
             <div className="ChatWindow">
                 {chatHistory.map((msg, idx) => (
-                    <div key={idx} className={msg.role === "user" ? "user-msg" : "bot-msg"}>
-                        {msg.content}
-                    </div>	
-                ))}
+                <div key={idx} className={msg.role === "user" ? "user-msg" : "bot-msg"}>
+                    {msg.role === "bot" ? (
+                        // Render AI content as HTML
+                        <span dangerouslySetInnerHTML={{ __html: msg.content }} />
+                    ) : (
+                        // Render user content as plain text
+                        <span>{msg.content}</span>
+                    )}
+                </div>	
+        ))}
 
                 {loading && <p>Loading...</p>}
                 {error && <p className="errorMsg">{error}</p>}

@@ -28,9 +28,7 @@ export default function PokePage(){
                 }
 
                 const data = await response.json();
-                console.log("FRONT RESPONSE DATA= ", data);
 
-                
                 await setCurrentPoke(data);
                 
             } catch (err) {
