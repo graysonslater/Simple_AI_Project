@@ -1072,7 +1072,6 @@ def seed_pokemon():
             image = pokemon_item["image"]
         )
         pokemonsters.append(pokemon)
-    print("BACKEND POKE TEST= ", pokemonsters)
    
     db.session.add_all(pokemonsters)
     db.session.commit()

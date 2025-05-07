@@ -1,6 +1,7 @@
 from flask.cli import AppGroup
 from .users import seed_users, undo_users
 from .pokemon import seed_pokemon, undo_pokemon
+from .user_pokemon import seed_UP, undo_UP
 
 from app.models.db import db, environment, SCHEMA
 
@@ -19,14 +20,14 @@ def seed():
         # Make sure to add all your other model's undo functions below
         undo_users()
         undo_pokemon()
+        undo_UP()
     seed_users()
     seed_pokemon()
-    # Add other seed functions here
+    seed_UP()
+    
 
-
-# Creates the `flask seed undo` command
 @seed_commands.command('undo')
 def undo():
     undo_users()
     undo_pokemon()
-    # Add other undo functions here
+    undo_UP()

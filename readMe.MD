@@ -51,6 +51,18 @@ The goal of this project is to test implimenting a simple AI interface into a we
     * ```<span dangerouslySetInnerHTML={{ __html: msg.content }} />```
         * __html must always be the key, the value is the message containing the html
     * a potentially dangerous solution - I should look for another way in the future!!!
+* Flask DB commands
+    * ```flask db downgrade``` removes migrated files
+    * ```flask db migrate``` migrate all models
+    * ```flask db upgrade``` make sure table layout is up to date
+    * ```flask seed all``` populate all tables with data
+    * ```flask db stamp head``` forces Alembic to mark your database as being at the latest migration (used when a newly created table does not have a migration file)
+
+* When you use Flask-Migrate (Alembic), it keeps track of which migrations have been applied to your database using a special table (alembic_version). If your migration history gets out of sync-for example, if you manually changed the database or deleted migration files-the system gets confused
+    * If the database is not at the latest migration ("head"), Alembic will refuse to generate new migrations and will show errors like "Target database is not up to date"
+    * This is because Alembic compares your current database schema (as tracked in alembic_version) with your models to generate new migration scripts. If it thinks your database is behind, it won't proceed
+
+
 
 ## Backend Installation
 

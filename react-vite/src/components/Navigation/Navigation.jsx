@@ -4,14 +4,13 @@ import { useEffect } from "react";
 import { getUserById } from "../../redux/session";
 import LoginModal from "../Modals/LoginModal/LoginModal";
 import LogoutModal from "../Modals/LogoutModal/LogoutModal";
-
 import "./Navigation.css";
 
 function Navigation(){
     const dispatch = useDispatch();
 
     //grab current user data 
-    const {user} = useSelector((state) => {return { user: state.session.user}});
+    const {user} = useSelector((state) => {return state.session.user});
     console.log("NAVBAR user state= ", user)
 
     useEffect(() => {
@@ -19,7 +18,6 @@ function Navigation(){
             dispatch(getUserById(user.id))
         }
         },[dispatch]);
-
 
     return(
         <div className="NavBarMain">

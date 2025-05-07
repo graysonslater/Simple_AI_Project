@@ -16,6 +16,7 @@ class Pokemon(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    pokemon_user = db.relationship('User_Pokemon', back_populates='pokemon', cascade="all, delete-orphan")
     
     def to_dict(self):
         return {
