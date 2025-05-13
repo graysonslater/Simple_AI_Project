@@ -9,6 +9,8 @@ The goal of this project is to test implimenting a simple AI interface into a we
 * fix error messages for edit user
 * verify CSRFProtect in the init file on backend - it is currently unused
 * add ability for users to add tags to certain pokemon and vet the tags for innapropriate content, spelling errors, etc
+* factor in the tags assosiated with a users favorite pokemon when making a query to the DB
+* add a dependency that checks to make sure ai response being added to html is safe
 
 ## Notes
 
@@ -80,7 +82,14 @@ The goal of this project is to test implimenting a simple AI interface into a we
 
 * Pokemon Suggestions agentic AI notes:
     * 3 levels of AI
-        * 1) 
+        1) Parse the users input to the AI for tags which can be used in a query to the DB
+        2) Formulate a query to the DB 
+        3) Generate a text response to the user with a link to the suggested pokemon
+
+* ```overlaps= ``` is used when defining a db.relationship to inform SQLAlchemy that multiple relationships share or “overlap” the same underlying foreign key columns or association table.
+    * When you have several relationships that use the same foreign key columns SQLAlchemy may not be able to tell how to manage updates, inserts, or deletes without potentially conflicting with itself
+    * overlaps parameter tells SQLAlchemy which other relationship names are using the same columns or association, so it can coordinate their behavior and avoid emitting warnings
+    * commonly used in many-to-many relationships
 
 ## Backend Installation
 

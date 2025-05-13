@@ -1,8 +1,9 @@
 from flask import Blueprint, request, jsonify
-import os
+import os, json
 from dotenv import load_dotenv 
 from openai import OpenAI
-from app.models import Pokemon
+from app.models import Pokemon, Tags, db
+
 
 load_dotenv()
 DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
@@ -156,6 +157,74 @@ def get_pokemon():
             stream = False
         )
         return jsonify(response.choices[0].message.content)
+    
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+
+@ai_routes.route('/agenticPokemon', methods=['POST']) 
+def post_agentic_poke():
+    """
+    Uses an agentic system of AI to query the database using tags from the user in order to reduce the 
+    size of the query then, generates a text response containing suggested pokemon with hyperlinks
+    to those pokemon
+    """
+    data = request.json
+    user_query = data.get('query','')
+    old_search = data.get('oldSearch')
+    chat_history = data.get('chatHistory')
+    print("BACKEND DATA old_search=", old_search)
+
+    #! AGENTIC AI 1
+    try:
+        search_tags = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[
+                {"role":"system", "content": 
+                    f"Given the following user search request for a Pokémon, identify and extract only single words that could be used as tags for querying the database (such as types, colors, or notable characteristics). Return the tags as an array of strings.\nUser input:\n{user_query}"
+                },
+                {"role": "user", "content": user_query}
+            ],
+            stream = False
+        )
+
+        #! QUERY DB USING AI ARRAY OF TAGS
+        # grab message from AI, is currently a JSON array
+        search_tags = search_tags.choices[0].message.content
+        # make the JSON array into a python List
+        search_tags = json.loads(search_tags) 
+        #assign query to old search to store in history
+        print("BACKEND OLD SEARCH TEST before old search= ", old_search, "search tags= ", search_tags)
+        old_search.extend(search_tags)
+        print("BACKEND OLD SEARCH TEST after= ", old_search)
+        # make all tags lower case
+        search_tags = [tag.lower() for tag in old_search]
+
+        # Pokemon.query.filter = start a DB search
+        # Pokemon.tags.any = look for pokemon that have at least one tag matching
+        # db.func.lower(Tags.tag).in_(search_tags) = for each item in search_tags check if the lower case version exists in the Tags table 
+        found_pokemon = Pokemon.query.filter(Pokemon.tags.any(db.func.lower(Tags.tag).in_(search_tags))).all()
+        
+        print("BACKEND RESULTS=", len(found_pokemon))
+        
+        #!AGENTIC AI 2
+        response = client.chat.completions.create(
+            model="deepseek-chat",
+            messages=[
+                {"role":"system", "content": 
+                    f"Using only the data below and taking into consideration the chat history provided below where you are the bot, find the pokemon that best corresponds to the users parameters, suggesting at minimum 3 pokemon. If the user is unhappy suggest 3 new pokemon. If the user inputs a prompt that makes it very hard to find a pokemon ask them to be more specific in their request. If they ask you to do something other than find a pokemon politely refuse. The only task you are able to do is find pokemon and ask for clarification from the user and nothing else. When suggesting the pokemon, make the Pokémon\'s name a clickable link using HTML: <a href=\"http://localhost:5173/pokemon/<pokemon_id>\" target=\"_blank\" rel=\"noopener\">Pokemon Name</a>.\n\nPokémon data:\n{found_pokemon}\n\nPokémon data:\n{chat_history}"
+                },
+                {"role": "user", "content": user_query}
+            ],
+            stream = False
+        )
+
+        print("BACKEND FINAL OLD SEARCH TEST= ", old_search)
+        # return a final recomendation
+        return jsonify({
+            "response": response.choices[0].message.content,
+            "oldSearch": old_search
+        })
     
     except Exception as e:
         return jsonify({"error": str(e)}), 500

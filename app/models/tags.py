@@ -12,7 +12,7 @@ class Tags(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
     pokemon_tags = db.relationship("Pokemon_Tags", back_populates="tag")
-    pokemon = db.relationship("Pokemon", secondary="pokemon_tags", back_populates="tags")
+    pokemon = db.relationship("Pokemon", secondary="pokemon_tags", back_populates="tags", overlaps="pokemon_tags")
 
     def to_dict(self):
         return {

@@ -13,8 +13,8 @@ class Pokemon_Tags(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
     
-    pokemon = db.relationship("Pokemon", back_populates="pokemon_tags")
-    tag = db.relationship("Tags", back_populates="pokemon_tags")
+    pokemon = db.relationship("Pokemon", back_populates="pokemon_tags", overlaps="tags,pokemon")
+    tag = db.relationship("Tags", back_populates="pokemon_tags", overlaps="tags,pokemon")
 
     def to_dict(self):
         return {

@@ -6,7 +6,7 @@ import LoginModal from "../Modals/LoginModal/LoginModal";
 import LogoutModal from "../Modals/LogoutModal/LogoutModal";
 import "./Navigation.css";
 
-function Navigation(){
+export default function Navigation(){
     const dispatch = useDispatch();
 
     //grab current user data 
@@ -33,9 +33,13 @@ function Navigation(){
             <NavLink className="navBarDI" to="/dataBaseIntegrationDemo" >
                 DataBase Integration
             </NavLink>
-            <NavLink className="navBarPoke" to="/pokemon/1" >
-                Pokemon Page Test
+            <NavLink className="navBarPoke" to="/agenticPokemonSearch" >
+                Agentic Search 
             </NavLink>
+            <NavLink className="navBarPoke" to="/pokemon/1" >
+                Pokemon Page 
+            </NavLink>
+            
 
             {/* If user logged in Display profile button else, login button */}
             {user ? (
@@ -49,5 +53,3 @@ function Navigation(){
     )
 
 }
-
-export default Navigation;

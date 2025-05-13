@@ -6,6 +6,7 @@ import PoemJokeDemo from '../components/PoemJokeDemo/PoemJokeDemo';
 import AutoResponseDemo from '../components/AutoResponseDemo/AutoResponseDemo';
 import DatabaseIntegrationDemo from '../components/DatabaseIntegrationDemo/DatabaseIntegrationDemo';
 import PokePage from '../components/PokePage/PokePage';
+import AgenticPokeSearch from '../components/AgenticPokeSearch/AgenticPokeSearch';
 
 
 export const router = createBrowserRouter([
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path:"/pokemon/:pokeId",
         element: <PokePage />
+      },
+      {
+        path:"/agenticPokemonSearch",
+        element: <AgenticPokeSearch />
       }
     ]
   }

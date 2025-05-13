@@ -18,7 +18,7 @@ class Pokemon(db.Model):
 
     pokemon_user = db.relationship('User_Pokemon', back_populates='pokemon', cascade="all, delete-orphan")
     pokemon_tags = db.relationship("Pokemon_Tags", back_populates="pokemon")
-    tags = db.relationship("Tags", secondary="pokemon_tags", back_populates="pokemon")
+    tags = db.relationship("Tags", secondary="pokemon_tags", back_populates="pokemon", overlaps="pokemon_tags")
     
     def to_dict(self):
         return {
