@@ -2,6 +2,14 @@
 
 The goal of this project is to test implimenting a simple AI interface into a web browser. By doing so I hope to have a better understanding about how to integrate a simple AI model into future projects by getting a clear grasp on how to implement the backend and front end components and logic needed to do so.
 
+## TODO
+
+* add ability to update, delete and create a user profile 
+* styling for website
+* fix error messages for edit user
+* verify CSRFProtect in the init file on backend - it is currently unused
+* add ability for users to add tags to certain pokemon and vet the tags for innapropriate content, spelling errors, etc
+
 ## Notes
 
 * The input from the user is taken into the backend through the app/api/ai_routes.py file. There it generates the response based on the pre-existing prompt you have written for it. Response is jsonified and returned to frontend
@@ -62,7 +70,17 @@ The goal of this project is to test implimenting a simple AI interface into a we
     * If the database is not at the latest migration ("head"), Alembic will refuse to generate new migrations and will show errors like "Target database is not up to date"
     * This is because Alembic compares your current database schema (as tracked in alembic_version) with your models to generate new migration scripts. If it thinks your database is behind, it won't proceed
 
+* important to have an authenticatin thunk in layout, prevents the user from being logged out on page reloads!!!
 
+* When setting up a modal and initalizing state ariables for email, username, etc you must use empty strings to initialize! Otherwise you can only type on letter at a time
+
+* ```'pokemon': [poke.to_dict() for poke in self.pokemon]``` and ```'tags': [tag.to_dict() for tag in self.tags]``` cause an an endless recursive loop - when pokemon tries to get all the pokemons data it includes all its tag data which includes all the pokemon data and so on
+    * this can be solved by simply assigning one element to the column
+    * ```'pokemon_ids': [poke.id for poke in self.pokemon]```
+
+* Pokemon Suggestions agentic AI notes:
+    * 3 levels of AI
+        * 1) 
 
 ## Backend Installation
 
@@ -287,7 +305,7 @@ routing for React applications, enabling navigation and URL management
 
 used for managing application state
 
-   redux-thunk
+    redux-thunk
 
 Middleware for Redux that allows writing action creators that return functions instead of actions,
     

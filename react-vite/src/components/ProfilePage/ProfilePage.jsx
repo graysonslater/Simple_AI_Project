@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getUserById } from "../../redux/session";
-// import {editEventThunk, deleteEvent} from "../../redux/events";
-// import {editReservation, deleteReservation, reservationCheck} from "../../redux/reservations";
-// import CustomModal from "../../context/CustomModal";
+import AddFavoritePokeModal from "../Modals/AddFavoritePokeModal/AddFavoritePokeModal";
+import EditUserModal from "../Modals/EditUserModal/EditUserModal";
+import DeleteUserModal from "../Modals/DeleteUserModal/DeleteUserModal";
 import "./ProfilePage.css"
 
 
@@ -16,11 +16,46 @@ export default function ProfilePage(){
     const user = useSelector((state) => {return state.session.user});
 
     useEffect(() => {
-        dispatch(getUserById(user.id))
+        if (user){
+            dispatch(getUserById(user.id));
+        }
     },[dispatch]);
 
+    return(
+        <div className="ProfilePageBox">
+            <h2>Profile Information</h2>
+            <div className="ProfileUserInfo">
+                <p>Username: {user ? (user.username) : "Loading..."}</p>
+                <>Email: {user ? (user.email) : "Loading..." }</>
+                <EditUserModal user={user}/>
+                <DeleteUserModal user={user}/>
+                <ul className={`UsersPokeList`}>
+                    {user ? (user.user_pokemon.sort((a, b) => a.pokemon.id - b.pokemon.id).map((poke) => (
+                        <li key={poke.id} className={`UserPoke${poke.id}`}>
+                            <h3 className={`UserPoke${poke.pokemon.name}`}>{poke.pokemon.name}</h3>
+                            <AddFavoritePokeModal pokeId={poke.pokemon.id}/>
+                            <img src={poke.pokemon.image} alt={poke.pokemon.name} className="ProfilePokePhoto"></img>
+                        </li>
+                    ))
+                ) : "Loading..."}
+                </ul>
 
-    //! edit user modal
+                {/* USER MODALS FUNCTIONALITY TO BE ADDED!!!!!!!*/}
+                {/* <button className="ProfileEditUserButton" type="button" onClick={(e) => editUserToggle(e, user)}>Edit</button>
+                <button className="EventDeleteUserBut" type="button" onClick={(e) => deleteUserToggle(e, user)}>Delete</button> */}
+
+                {/* USER MODALS FUNCTIONALITY TO BE ADDED!!!!!!!*/}
+                {/* <>{EditUserModal()}</>
+                <DeleteUserModal /> */}
+
+            </div>
+        </div>
+    )
+}
+
+
+//!hack unfinished code which i will prolly make into individual components and then import into this file
+    //! edit user modal -to be added later
     // const [showEditUser, setShowEditUser] = useState(false);
     // const [username, setUsername] = useState();
     // const [firstname, setFirstname] = useState();
@@ -147,7 +182,7 @@ export default function ProfilePage(){
     // };
 
 
-    //! set modal state for deleting a USER!
+    //! set modal state for deleting a USER! - to be added later
 	// const [showUserDelete, setShowUserDelete] = useState(false);
 	// const [userToDelete, setUserToDelete] = useState(null);
     
@@ -196,24 +231,3 @@ export default function ProfilePage(){
 	// 		</div>
     //     )
     // };
-
-
-    return(
-        <div className="ProfilePageBox">
-            <h2>Profile Information</h2>
-            <div className="ProfileUserInfo">
-                <p>Username: {user.username}</p>
-                <>Email: {user.email}</>
-
-                {/* USER MODALS FUNCTIONALITY TO BE ADDED!!!!!!!*/}
-                {/* <button className="ProfileEditUserButton" type="button" onClick={(e) => editUserToggle(e, user)}>Edit</button>
-                <button className="EventDeleteUserBut" type="button" onClick={(e) => deleteUserToggle(e, user)}>Delete</button> */}
-
-                {/* USER MODALS FUNCTIONALITY TO BE ADDED!!!!!!!*/}
-                {/* <>{EditUserModal()}</>
-                <DeleteUserModal /> */}
-
-            </div>
-        </div>
-    )
-}

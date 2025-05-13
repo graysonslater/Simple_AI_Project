@@ -1,13 +1,15 @@
 import { useParams } from "react-router-dom/dist/umd/react-router-dom.development";
-import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
+import AddFavoritePokeModal from "../Modals/AddFavoritePokeModal/AddFavoritePokeModal";
+import "./PokePage.css"
+
 
 export default function PokePage(){
     const [loading, setLoading] = useState(false);
     const [currentPoke, setCurrentPoke] = useState();
     const {pokeId} = useParams();
-    console.log("FRONT URL ID= ", pokeId)
+    const user = useSelector((state) => state.session.user);
 
     useEffect(() => {
         // make  handler event inside the useEffect
@@ -20,7 +22,7 @@ export default function PokePage(){
                         "Content-Type": "application/json",
                     },
                 });
-
+                
                 if (!response.ok) {
                     throw new Error(
                         `Server error: ${response.status} ${response.statusText}`
@@ -40,7 +42,7 @@ export default function PokePage(){
 
         //call the handler function after assigning it
         fetchPokemon();
-        console.log("FRONT currentPoke= ", currentPoke)
+
         // sets off useEffect with each new page
     }, [pokeId]);
     
@@ -49,11 +51,13 @@ export default function PokePage(){
             {loading ? (
                 <p>Loading...</p>
             ) : currentPoke ? (
-                <>
+                <>  
+                    {console.log("POKE PAGE POKE TEST= ", currentPoke)}
                     <h1 className="PokeName">{currentPoke.name}</h1>
                     <h3 className="Poketype">{currentPoke.type_of}</h3>
                     <img src={currentPoke.image} alt={currentPoke.name} className="PokePhoto"></img>
                     <p className="PokeDescription">{currentPoke.description}</p>
+                    {user && (<AddFavoritePokeModal pokeId={currentPoke.id}/>)}
                 </>
             ) : (
                 <p>No Pokémon found.</p>

@@ -17,6 +17,8 @@ class Pokemon(db.Model):
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     pokemon_user = db.relationship('User_Pokemon', back_populates='pokemon', cascade="all, delete-orphan")
+    pokemon_tags = db.relationship("Pokemon_Tags", back_populates="pokemon")
+    tags = db.relationship("Tags", secondary="pokemon_tags", back_populates="pokemon")
     
     def to_dict(self):
         return {
@@ -26,4 +28,5 @@ class Pokemon(db.Model):
             'description': self.description,
             'evolved': self.evolved,
             'image': self.image,
+            'tags' : [tag.tag for tag in self.tags]
         }

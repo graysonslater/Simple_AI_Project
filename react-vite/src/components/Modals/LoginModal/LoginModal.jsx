@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { thunkLogin, demoLogin } from "../../../redux/session";
 import CustomModal from "../../../context/CustomModal";
 
@@ -13,11 +13,7 @@ export default function LoginModal(){
 
 
     //grab current user data (to ensure there is NO user currently logged in - if user is logged na nd sees login modal there is a PROBLEM)
-    const {user} = useSelector((state) => {
-        return{ 
-        user: state.session.user,
-        }
-    });
+    const user = useSelector((state) => {return state.session.user});
     // console.log("LOGIN MODAL useSelector= ", "USER= ", user)
 
 

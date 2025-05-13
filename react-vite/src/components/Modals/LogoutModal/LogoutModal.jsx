@@ -1,21 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { thunkLogout } from "../../../redux/session";
 import CustomModal from "../../../context/CustomModal";
 
 
 export default function LogoutModal(){
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [showLogout, setshowLogout] = useState(false); 
 
 
     //grab current user data 
-    const {user} = useSelector((state) => {
-        return{ 
-        user: state.session.user,
-        }
-    });
-    console.log("LOGOUT MODAL useSelector= ", "USER= ", user)
+    const user = useSelector((state) => {return state.session.user});
+    // console.log("LOGOUT MODAL useSelector= ", "USER= ", user)
 
 
     //send Login attempt to backend
@@ -25,6 +23,7 @@ export default function LogoutModal(){
         navigate("/");
     };
 
+    
     //toggle for modal
     const logoutToggle = (e) => { 
         e.preventDefault();

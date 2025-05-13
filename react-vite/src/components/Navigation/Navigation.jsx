@@ -10,7 +10,7 @@ function Navigation(){
     const dispatch = useDispatch();
 
     //grab current user data 
-    const {user} = useSelector((state) => {return state.session.user});
+    const user = useSelector((state) => {return state.session.user});
     console.log("NAVBAR user state= ", user)
 
     useEffect(() => {

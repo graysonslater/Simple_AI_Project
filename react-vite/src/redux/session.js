@@ -62,7 +62,7 @@ export const thunkLogin = (credentials) => async dispatch => {
 //demo login
 export const demoLogin = () => async (dispatch) => {
   const user = { email: "demo@aa.io", password: "password" };
-  console.log("STORE SESSION user= ", user)
+
   const response = await fetch("/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -133,8 +133,6 @@ export const editUser = (info) => async (dispatch) => {
         },
         body: JSON.stringify({
           username: info.username,
-          firstname: info.firstname,
-          lastname: info.lastname,
           email: info.email
         })
     })
@@ -186,6 +184,43 @@ export const thunkDeleteUser = (userId) => async (dispatch) => {
   }
 }
 
+//add a favorite pokemon
+export const addFavoriteThunk = (poke_id) => async (dispatch) => {
+    const response = await fetch("/api/pokemon/addFavorite", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(poke_id)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        await dispatch(setUser(data))
+    } else if (response.status < 500) {
+        const errorMessages = await response.json();
+        return errorMessages;
+    } else {
+        return { server: "Something went wrong. Please try again" };
+    }
+};
+
+
+export const removeFavoriteThunk = (poke_id) => async (dispatch) => {
+    const response = await fetch("/api/pokemon/removeFavorite", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(poke_id)
+    });
+
+    if (response.ok) {
+        const data = await response.json();
+        await dispatch(setUser(data))
+    } else if (response.status < 500) {
+        const errorMessages = await response.json();
+        return errorMessages;
+    } else {
+        return { server: "Something went wrong. Please try again" };
+    }
+};
 
 const initialState = { user: null, userNameCheckState: [], emailCheckState: [] };
 function sessionReducer(state = initialState, action) {
