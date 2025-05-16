@@ -18,3 +18,47 @@
   align-items: center;
   padding: 10px 0;
 }
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: rgb(8, 2, 2);
+  background-color: darkgrey;
+  padding: 14px 16px;
+  background-color: inherit;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content .navBarPJD,
+.dropdown-content .navBarARAI,
+.dropdown-content .navBarDI,
+.dropdown-content .navBarPoke,
+.dropdown-content .navBarSIG{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}

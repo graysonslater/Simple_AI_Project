@@ -4,3 +4,4 @@ from .pokemon import Pokemon
 from .user_pokemon import User_Pokemon
 from .tags import Tags
 from .pokemon_tags import Pokemon_Tags
+from .ai_monster import AI_Monster

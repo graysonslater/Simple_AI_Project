@@ -1,25 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { getUserById } from "../../redux/session";
+import { useSelector } from "react-redux";
 import AddFavoritePokeModal from "../Modals/AddFavoritePokeModal/AddFavoritePokeModal";
 import EditUserModal from "../Modals/EditUserModal/EditUserModal";
 import DeleteUserModal from "../Modals/DeleteUserModal/DeleteUserModal";
+import MonsterImage from "../Modals/MonsterImage";
+import DeleteAIMonster from "../Modals/DeleteAiMonsterModal/DeleteAiMonsterModal";
 import "./ProfilePage.css"
 
 
 export default function ProfilePage(){
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     //"user" contains all events and reservations for the current user
-    const user = useSelector((state) => {return state.session.user});
+    const user  = useSelector((state) => 
+        {return state.session.user} 
+    );
 
-    useEffect(() => {
-        if (user){
-            dispatch(getUserById(user.id));
-        }
-    },[dispatch]);
 
     return(
         <div className="ProfilePageBox">
@@ -29,6 +23,7 @@ export default function ProfilePage(){
                 <>Email: {user ? (user.email) : "Loading..." }</>
                 <EditUserModal user={user}/>
                 <DeleteUserModal user={user}/>
+                <h2>Favorited Pokemon</h2>
                 <ul className={`UsersPokeList`}>
                     {user ? (user.user_pokemon.sort((a, b) => a.pokemon.id - b.pokemon.id).map((poke) => (
                         <li key={poke.id} className={`UserPoke${poke.id}`}>
@@ -38,6 +33,16 @@ export default function ProfilePage(){
                         </li>
                     ))
                 ) : "Loading..."}
+                </ul>
+                <h2>Your AI Monsters</h2>
+                <ul className={`UsersAIList`}>
+                    {user ? (user.ai_monsters.map((poke) => (
+                        <li key={poke.id} className={`UserPoke${poke.id}`}>
+                            <h3 className={`UserPoke${poke.name}`}>{poke.name}</h3>
+                            <DeleteAIMonster monsterId={poke.id} userId={user.id}/>
+                            <MonsterImage monsterId={poke.id} />
+                        </li>
+                    ))) : "Loading..."}
                 </ul>
 
                 {/* USER MODALS FUNCTIONALITY TO BE ADDED!!!!!!!*/}

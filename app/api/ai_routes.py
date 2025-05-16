@@ -4,13 +4,11 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from app.models import Pokemon, Tags, db
 
+ai_routes = Blueprint('ai', __name__)
 
 load_dotenv()
 DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
-
 client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
-
-ai_routes = Blueprint('ai', __name__)
 
 
 @ai_routes.route('/poems', methods=['POST']) #!note the method is post!!!

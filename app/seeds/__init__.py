@@ -4,6 +4,7 @@ from .pokemon import seed_pokemon, undo_pokemon
 from .user_pokemon import seed_UP, undo_UP
 from .tags import seed_tags, undo_tags
 from .pokemon_tags import seed_poke_tags, undo_poke_tags
+from .ai_monster import seed_AImon, undo_AImon
 
 from app.models.db import db, environment, SCHEMA
 
@@ -21,11 +22,13 @@ def seed():
         undo_UP()
         undo_tags()
         undo_poke_tags()
+        undo_AImon()
     seed_users()
     seed_pokemon()
     seed_UP()
     seed_tags()
     seed_poke_tags()
+    seed_AImon()
     
 
 @seed_commands.command('undo')
@@ -35,3 +38,4 @@ def undo():
     undo_UP()
     undo_tags()
     undo_poke_tags()
+    undo_AImon()

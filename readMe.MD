@@ -11,6 +11,9 @@ The goal of this project is to test implimenting a simple AI interface into a we
 * add ability for users to add tags to certain pokemon and vet the tags for innapropriate content, spelling errors, etc
 * factor in the tags assosiated with a users favorite pokemon when making a query to the DB
 * add a dependency that checks to make sure ai response being added to html is safe
+* create an all pokemon page
+* add redo feature to all AI
+* display AI poke in same list as reglar poke
 
 ## Notes
 
@@ -90,6 +93,11 @@ The goal of this project is to test implimenting a simple AI interface into a we
     * When you have several relationships that use the same foreign key columns SQLAlchemy may not be able to tell how to manage updates, inserts, or deletes without potentially conflicting with itself
     * overlaps parameter tells SQLAlchemy which other relationship names are using the same columns or association, so it can coordinate their behavior and avoid emitting warnings
     * commonly used in many-to-many relationships
+
+* Base64 encoding is a way to convert binary data (like an image) into a text format that can be easily transmitted over text-based protocols such as JSON or HTML
+    * base64 module in Python provides functions for encoding binary data to printable ASCII characters and decoding it back
+
+* b64encode is a bytes object. .decode('utf-8') converts this bytes object into a regular string, making it suitable for inclusion in JSON responses or for display in web pages
 
 ## Backend Installation
 
@@ -345,3 +353,11 @@ build tool for deployment
     vite-plugin-eslint
 
 Vite plugin to integrate ESLint into the build process    
+
+    reactstrap
+
+provides Bootstrap components as React components, making it easier to use Bootstrap-style UI elements in React apps
+
+    Bootstrap 
+
+widely used open-source CSS framework designed to simplify the development of responsive, mobile-first websites

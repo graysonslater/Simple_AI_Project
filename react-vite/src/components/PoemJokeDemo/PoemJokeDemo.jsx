@@ -2,7 +2,7 @@ import JokeComponent from "../AiAssistant/jokes";
 import PoemComponent from "../AiAssistant/Poems";
 import "./PoemJokeDemo.css";
 
-function PoemJokeDemo(){
+export default function PoemJokeDemo(){
     return(
         <div className="PJDMainBox">
             <h1>Poem and Joke Demo</h1>
@@ -19,5 +19,3 @@ function PoemJokeDemo(){
         </div>
     )
 }
-
-export default PoemJokeDemo;

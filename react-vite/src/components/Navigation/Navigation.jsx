@@ -24,23 +24,37 @@ export default function Navigation(){
             <NavLink className="navBarHome" to="/" >
                 Home
             </NavLink>
-            <NavLink className="navBarPJD" to="/poemJokeDemo" >
-                Poem and Joke Demo
-            </NavLink>
-            <NavLink className="navBarARAI" to="/autoResponseDemo" >
-                Auto Responding AI
-            </NavLink>
-            <NavLink className="navBarDI" to="/dataBaseIntegrationDemo" >
-                DataBase Integration
-            </NavLink>
-            <NavLink className="navBarPoke" to="/agenticPokemonSearch" >
-                Agentic Search 
-            </NavLink>
+            <div className="dropdown">
+                <button className="dropbtn">Simple Demos</button>
+                <div className="dropdown-content">
+                    <NavLink className="navBarPJD" to="/poemJokeDemo">
+                        Poem and Joke Demo
+                    </NavLink>
+                    <NavLink className="navBarARAI" to="/autoResponseDemo">
+                        Auto Responding AI
+                    </NavLink>
+                </div>
+            </div>
+
+            <div className="dropdown">
+                <button className="dropbtn">ADV Demos</button>
+                <div className="dropdown-content">
+                    <NavLink className="navBarDI" to="/dataBaseIntegrationDemo" >
+                        DataBase Integration
+                    </NavLink>
+                    <NavLink className="navBarPoke" to="/agenticPokemonSearch" >
+                        Agentic Search 
+                    </NavLink>
+                    <NavLink className="navBarSIG" to="/simpleImageGeneration" >
+                        Simple Image Gen 
+                    </NavLink>
+                </div>
+            </div>
+            
             <NavLink className="navBarPoke" to="/pokemon/1" >
                 Pokemon Page 
             </NavLink>
-            
-
+        
             {/* If user logged in Display profile button else, login button */}
             {user ? (
                 <>

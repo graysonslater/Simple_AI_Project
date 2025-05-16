@@ -7,6 +7,7 @@ import AutoResponseDemo from '../components/AutoResponseDemo/AutoResponseDemo';
 import DatabaseIntegrationDemo from '../components/DatabaseIntegrationDemo/DatabaseIntegrationDemo';
 import PokePage from '../components/PokePage/PokePage';
 import AgenticPokeSearch from '../components/AgenticPokeSearch/AgenticPokeSearch';
+import SimpleImageGeneration from '../components/SimpleImageGeneration/SimpleImageGeneration';
 
 
 export const router = createBrowserRouter([
@@ -40,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path:"/agenticPokemonSearch",
         element: <AgenticPokeSearch />
+      },
+      {
+        path:"/simpleImageGeneration",
+        element: <SimpleImageGeneration />
       }
     ]
   }

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./AI.css";
 
 export default function AgenticPokemonFinder(){
-    const greeting = "Hello! Are you looking for a new favorite pokemon? I can help you find one in the database! I have knoledge of the first 151 pokemon so ask away!"
+    const greeting = "Hello! Looking for a new favorite Pokemon? I can suggest one for you - just type what kind of pokemon you're looking for below! I have knowledge of the first 151 pokemon so ask away!"
     const [query, setQuery] = useState("");
     const [chatHistory, setChatHistory] = useState([{ role: "bot", content: greeting }]);
     const [loading, setLoading] = useState(false);

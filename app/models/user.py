@@ -15,6 +15,8 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     
     user_pokemon = db.relationship('User_Pokemon', back_populates='user', cascade="all, delete-orphan")
+    ai_monsters = db.relationship("AI_Monster", backref="users", cascade="all, delete-orphan")
+
 
     @property
     def password(self):
@@ -33,5 +35,13 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             # this line allows you to access the user_pokemon table through the user object
-            'user_pokemon': [users_poke.to_dict() for users_poke in self.user_pokemon]
+            'user_pokemon': [users_poke.to_dict() for users_poke in self.user_pokemon],
+            'ai_monsters': [{
+                'id': monster.id, 
+                'name': monster.name, 
+                'type_of': monster.type_of, 
+                "description": monster.description, 
+                'evolved': monster.evolved   
+            } for monster in self.ai_monsters]
+
         }

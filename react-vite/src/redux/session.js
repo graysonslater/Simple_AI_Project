@@ -26,6 +26,12 @@ const deleteUser = () => ({
   type: DELETE_USER,
 })
 
+const SET_AIMON = 'session/getUsersAiMonsters'
+const getAiMon = (monsters) => ({
+  type: SET_AIMON,
+  payload: monsters
+})
+
 
 //autherize
 export const thunkAuthenticate = () => async (dispatch) => {
@@ -38,6 +44,7 @@ export const thunkAuthenticate = () => async (dispatch) => {
 	dispatch(setUser(data));
 	}
 };
+
 
 //login
 export const thunkLogin = (credentials) => async dispatch => {
@@ -123,7 +130,6 @@ export const getUserById = (userId) => async (dispatch) => {
 };
 
 
-
 //update user
 export const editUser = (info) => async (dispatch) => {
     const request = await fetch(`/api/users/${info.userId}`, {
@@ -184,6 +190,7 @@ export const thunkDeleteUser = (userId) => async (dispatch) => {
   }
 }
 
+
 //add a favorite pokemon
 export const addFavoriteThunk = (poke_id) => async (dispatch) => {
     const response = await fetch("/api/pokemon/addFavorite", {
@@ -204,6 +211,7 @@ export const addFavoriteThunk = (poke_id) => async (dispatch) => {
 };
 
 
+// remove a favorite from a user
 export const removeFavoriteThunk = (poke_id) => async (dispatch) => {
     const response = await fetch("/api/pokemon/removeFavorite", {
         method: "DELETE",
@@ -221,6 +229,7 @@ export const removeFavoriteThunk = (poke_id) => async (dispatch) => {
         return { server: "Something went wrong. Please try again" };
     }
 };
+
 
 const initialState = { user: null, userNameCheckState: [], emailCheckState: [] };
 function sessionReducer(state = initialState, action) {

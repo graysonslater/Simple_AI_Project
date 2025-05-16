@@ -27,6 +27,7 @@ export default defineConfig((mode) => ({
     //sets up a proxy for API requests, sets listening port for backend
     proxy: {
       "/api": "http://127.0.0.1:8000",
+      "/imageApi" : ""
     },
   },
 }));

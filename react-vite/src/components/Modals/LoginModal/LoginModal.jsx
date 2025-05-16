@@ -3,6 +3,50 @@ import { useState } from "react";
 import { thunkLogin, demoLogin } from "../../../redux/session";
 import CustomModal from "../../../context/CustomModal";
 
+const LoginModalHTML = ({
+        showLogin,
+        loginToggle,
+        handleLogin,
+        email,
+        setEmail,
+        password,
+        setPassword,
+        errors,
+        demoLoginHandler
+    }) => { 
+        return (
+            <div className="LoginButton">
+                {showLogin && (
+                    <CustomModal onClose={(e) => loginToggle(e)}>
+                        <form onSubmit={handleLogin}>
+                            <label>
+                            Email
+                            <input
+                                type="text"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            </label>
+                            {errors.email && <p>{errors.email}</p>}
+                            <label>
+                            Password
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            </label>
+                            {errors.password && <p>{errors.password}</p>}
+                            <button type="submit">Log In</button>
+                        </form>
+                        <button className="loginDemo" onClick={demoLoginHandler}>Login in as Demo User</button>     
+                    </CustomModal>
+                )}
+            </div>
+        );
+    };
 
 export default function LoginModal(){
     const dispatch = useDispatch();
@@ -49,43 +93,6 @@ export default function LoginModal(){
         e.stopPropagation();
         setShowLogin(!showLogin);
     };
-
-
-    //The html that will appear inside the modal once it pops up
-    const LoginModalHTML = () => { 
-        return (
-            <div className="LoginButton">
-                {showLogin && (
-                    <CustomModal onClose={(e) => loginToggle(e)}>
-                        <form onSubmit={handleLogin}>
-                            <label>
-                            Email
-                            <input
-                                type="text"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                            </label>
-                            {errors.email && <p>{errors.email}</p>}
-                            <label>
-                            Password
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                            </label>
-                            {errors.password && <p>{errors.password}</p>}
-                            <button type="submit">Log In</button>
-                        </form>
-                        <button className="loginDemo" onClick={demoLoginHandler}>Login in as Demo User</button>     
-                    </CustomModal>
-                )}
-            </div>
-        );
-    };
  
 
     return(
@@ -99,7 +106,17 @@ export default function LoginModal(){
                         Login
                     </button>
             </div>
-            <LoginModalHTML />
+            <LoginModalHTML
+                showLogin={showLogin}
+                loginToggle={loginToggle}
+                handleLogin={handleLogin}
+                email={email}
+                setEmail={setEmail}
+                password={password}
+                setPassword={setPassword}
+                errors={errors}
+                demoLoginHandler={demoLoginHandler}
+            />
         </>
     )
 }
