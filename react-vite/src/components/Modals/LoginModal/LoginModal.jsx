@@ -1,64 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { thunkLogin, demoLogin } from "../../../redux/session";
-import CustomModal from "../../../context/CustomModal";
+import { LoginModalHTML } from "./LoginModalHTML";
 
-const LoginModalHTML = ({
-        showLogin,
-        loginToggle,
-        handleLogin,
-        email,
-        setEmail,
-        password,
-        setPassword,
-        errors,
-        demoLoginHandler
-    }) => { 
-        return (
-            <div className="LoginButton">
-                {showLogin && (
-                    <CustomModal onClose={(e) => loginToggle(e)}>
-                        <form onSubmit={handleLogin}>
-                            <label>
-                            Email
-                            <input
-                                type="text"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                            </label>
-                            {errors.email && <p>{errors.email}</p>}
-                            <label>
-                            Password
-                            <input
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                            </label>
-                            {errors.password && <p>{errors.password}</p>}
-                            <button type="submit">Log In</button>
-                        </form>
-                        <button className="loginDemo" onClick={demoLoginHandler}>Login in as Demo User</button>     
-                    </CustomModal>
-                )}
-            </div>
-        );
-    };
 
 export default function LoginModal(){
+
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState({});
     const [showLogin, setShowLogin] = useState(false); // used to help toggle the modal
-
-
-    //grab current user data (to ensure there is NO user currently logged in - if user is logged na nd sees login modal there is a PROBLEM)
-    const user = useSelector((state) => {return state.session.user});
-    // console.log("LOGIN MODAL useSelector= ", "USER= ", user)
 
 
     //send Login attempt to backend
@@ -88,7 +40,7 @@ export default function LoginModal(){
 
 
     //toggle for modal
-    const loginToggle = (e) => { //!NEEDS TO BE UPDATED
+    const loginToggle = (e) => { 
         e.preventDefault();
         e.stopPropagation();
         setShowLogin(!showLogin);

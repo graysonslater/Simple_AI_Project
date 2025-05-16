@@ -17,7 +17,7 @@ export default function DeleteUserModal({user}) {
         e.preventDefault();
         e.stopPropagation();
         await dispatch(thunkDeleteUser(user.id));
-        navigate("/home");
+        navigate("/");
     };
 
 

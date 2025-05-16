@@ -32,6 +32,8 @@ def seed_AImon():
             "type_of": "Grass",
             "description": "A small monkey Like pokemon that doesn't fit in well with others",
             "evolved": False,
+            'attack': 100,
+            'defense': 40,
             "image": image_bytes1,
             "permanent" : True
         },
@@ -41,6 +43,8 @@ def seed_AImon():
             "type_of": "ice",
             "description": "Lives in cold northern climates, is very shy",
             "evolved": False,
+            'attack': 70,
+            'defense': 50,
             "image": image_bytes4,
             "permanent" : True
         },
@@ -50,6 +54,8 @@ def seed_AImon():
             "type_of": "water",
             "description": "A small water type pokemon that is brave and agressive",
             "evolved": False,
+            'attack': 40,
+            'defense': 100,
             "image": image_bytes2,
             "permanent" : True
         },
@@ -59,6 +65,8 @@ def seed_AImon():
             "type_of": "rock",
             "description": "A large fire breathing rock type that is vary rarely seen and very timid",
             "evolved": False,
+            'attack': 40,
+            'defense': 80,
             "image": image_bytes3,
             "permanent" : True
         }
@@ -73,6 +81,8 @@ def seed_AImon():
             description = pokemon_item["description"],
             evolved = pokemon_item["evolved"],
             image = pokemon_item["image"],
+            attack = pokemon_item["attack"],
+            defense = pokemon_item["defense"],
             permanent = pokemon_item["permanent"]
         )
         pokemonsters.append(pokemon)

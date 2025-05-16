@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import AddFavoritePokeModal from "../Modals/AddFavoritePokeModal/AddFavoritePokeModal";
 import EditUserModal from "../Modals/EditUserModal/EditUserModal";
 import DeleteUserModal from "../Modals/DeleteUserModal/DeleteUserModal";
-import MonsterImage from "../Modals/MonsterImage";
+import MonsterImage from "../AiAssistant/MonsterImage";
 import DeleteAIMonster from "../Modals/DeleteAiMonsterModal/DeleteAiMonsterModal";
 import "./ProfilePage.css"
 

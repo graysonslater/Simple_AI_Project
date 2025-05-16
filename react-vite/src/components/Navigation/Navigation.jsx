@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { getUserById } from "../../redux/session";
 import LoginModal from "../Modals/LoginModal/LoginModal";
 import LogoutModal from "../Modals/LogoutModal/LogoutModal";
+import SignUpModal from "../Modals/SignUpModal/SignUpModal";
 import "./Navigation.css";
 
 export default function Navigation(){
@@ -62,7 +63,11 @@ export default function Navigation(){
                     <LogoutModal />
                 </>
             ) : (
-                <LoginModal />)}   
+                <>
+                    <LoginModal />
+                    <SignUpModal />
+                </>
+            )}   
         </div>
     )
 

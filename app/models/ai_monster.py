@@ -8,12 +8,14 @@ class AI_Monster(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer,db. ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     name = db.Column(db.String(255), nullable=False, unique=True)
     type_of = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255), nullable=False, unique=True)
     evolved = db.Column(db.Boolean(), nullable=False)
-    image = db.Column(db.LargeBinary, nullable=False) 
+    image = db.Column(db.LargeBinary, nullable=False)
+    attack =  db.Column(db.Integer, nullable=False)
+    defense =  db.Column(db.Integer, nullable=False)
     permanent = db.Column(db.Boolean(), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -27,5 +29,7 @@ class AI_Monster(db.Model):
             'description': self.description,
             'evolved': self.evolved,
             'permanent': self.permanent,
+            'attack': self.attack,
+            'defense': self.defense,
             'image': self.image,
         }
