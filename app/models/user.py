@@ -41,7 +41,9 @@ class User(db.Model, UserMixin):
                 'name': monster.name, 
                 'type_of': monster.type_of, 
                 "description": monster.description, 
-                'evolved': monster.evolved   
+                'evolved': monster.evolved,   
+                'attack': monster.attack,
+                'defense': monster.defense
             } for monster in self.ai_monsters]
 
         }

@@ -8,6 +8,7 @@ import DatabaseIntegrationDemo from '../components/DatabaseIntegrationDemo/Datab
 import PokePage from '../components/PokePage/PokePage';
 import AgenticPokeSearch from '../components/AgenticPokeSearch/AgenticPokeSearch';
 import SimpleImageGeneration from '../components/SimpleImageGeneration/SimpleImageGeneration';
+import MonsterMaker from '../components/MonsterMaker/MonsterMaker';
 
 
 export const router = createBrowserRouter([
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
       {
         path:"/simpleImageGeneration",
         element: <SimpleImageGeneration />
+      },
+      {
+        path:"/monsterMaker",
+        element: <MonsterMaker />
       }
     ]
   }

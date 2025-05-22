@@ -49,6 +49,9 @@ export default function Navigation(){
                     <NavLink className="navBarSIG" to="/simpleImageGeneration" >
                         Simple Image Gen 
                     </NavLink>
+                    {user && <NavLink className="navBarMM" to="/monsterMaker" >
+                        Monster Maker
+                    </NavLink> }
                 </div>
             </div>
             
@@ -58,7 +61,7 @@ export default function Navigation(){
         
             {/* If user logged in Display profile button else, login button */}
             {user ? (
-                <>
+                <>  
                     <NavLink className="navBarProfile" to="/profile" >Profile</NavLink> 
                     <LogoutModal />
                 </>

@@ -11,7 +11,7 @@ class AI_Monster(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     name = db.Column(db.String(255), nullable=False, unique=True)
     type_of = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.String(255), nullable=False, unique=True)
+    description = db.Column(db.String(255), nullable=False)
     evolved = db.Column(db.Boolean(), nullable=False)
     image = db.Column(db.LargeBinary, nullable=False)
     attack =  db.Column(db.Integer, nullable=False)

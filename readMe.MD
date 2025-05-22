@@ -4,16 +4,20 @@ The goal of this project is to test implimenting a simple AI interface into a we
 
 ## TODO
 
-* add ability to update, delete and create a user profile 
 * styling for website
 * fix error messages for edit user
 * verify CSRFProtect in the init file on backend - it is currently unused
 * add ability for users to add tags to certain pokemon and vet the tags for innapropriate content, spelling errors, etc
-* factor in the tags assosiated with a users favorite pokemon when making a query to the DB
 * add a dependency that checks to make sure ai response being added to html is safe
 * create an all pokemon page
 * add redo feature to all AI
 * display AI poke in same list as reglar poke
+* order poke on profile page by att or dff or date created 
+* add error messages that appear when creating a monster
+* add error messages when logging in 
+* delete poke images after 3 days
+* limit the number aof ai monsters to 3 per user
+* add loading indicator to create pokemon page
 
 ## Notes
 
