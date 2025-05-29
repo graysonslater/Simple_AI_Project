@@ -7,11 +7,11 @@ import "./MonsterMaker.css";
 export default function MonsterMaker() {
     const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const [name, setName] = useState("test");
-	const [description, setDescription] = useState("fluffy");
-	const [typeOf, setTypeOf] = useState("Fairy"); 
+	const [name, setName] = useState("");
+	const [description, setDescription] = useState("");
+	const [typeOf, setTypeOf] = useState(""); 
 	const [monster, setMonster] = useState()
-	const [prompt, setPrompt] = useState("pink"); 
+	const [prompt, setPrompt] = useState(""); 
 	const [errors, setErrors] = useState({});
 
     //Type options for new monster

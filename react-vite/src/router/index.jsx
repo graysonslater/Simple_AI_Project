@@ -9,6 +9,7 @@ import PokePage from '../components/PokePage/PokePage';
 import AgenticPokeSearch from '../components/AgenticPokeSearch/AgenticPokeSearch';
 import SimpleImageGeneration from '../components/SimpleImageGeneration/SimpleImageGeneration';
 import MonsterMaker from '../components/MonsterMaker/MonsterMaker';
+import BattlePage from '../components/BattlePage/BattlePage';
 
 
 export const router = createBrowserRouter([
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path:"/monsterMaker",
         element: <MonsterMaker />
+      },
+      {
+        path:"/battleArena",
+        element: <BattlePage />
       }
     ]
   }

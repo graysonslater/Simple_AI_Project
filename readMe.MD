@@ -18,6 +18,7 @@ The goal of this project is to test implimenting a simple AI interface into a we
 * delete poke images after 3 days
 * limit the number aof ai monsters to 3 per user
 * add loading indicator to create pokemon page
+* pass down user state from only nav bar to all other componenets
 
 ## Notes
 
@@ -51,7 +52,7 @@ The goal of this project is to test implimenting a simple AI interface into a we
         ]
     }
     ```
-    *this is why when sending the response to the front end you must use ```response.choices[0].message.content```
+    * this is why when sending the response to the front end you must use ```response.choices[0].message.content```
 
 * when recieving a repsonse object, the front end gets an "ok" property in the response which is a boolean. If the backend had an error that property will automatically be set to false when sent to the frontend
 

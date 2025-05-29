@@ -49,9 +49,16 @@ export default function Navigation(){
                     <NavLink className="navBarSIG" to="/simpleImageGeneration" >
                         Simple Image Gen 
                     </NavLink>
-                    {user && <NavLink className="navBarMM" to="/monsterMaker" >
-                        Monster Maker
-                    </NavLink> }
+                    {user && 
+                        <div className="UserLoggedInNavBar">
+                            <NavLink className="navBarMM" to="/monsterMaker" >
+                                Monster Maker
+                            </NavLink> 
+                            <NavLink className="navBarBA" to="/battleArena" >
+                                Battle Arena
+                            </NavLink> 
+                        </div>
+                    }
                 </div>
             </div>
             

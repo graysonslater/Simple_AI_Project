@@ -36,6 +36,11 @@ def post_image():
 
 @image_routes.route('/monster_maker', methods=['POST']) 
 def post_monster_maker():
+    # make sure user doesnt have more than 3 ai monsters
+    mon_check = AI_Monster.query.filter_by(user_id=current_user.id).all()
+    if len(mon_check) >= 3:
+        return jsonify({"error": "Users can only have 3 AI monsters"}), 400
+
     data = request.json
     prompt = (
         f"Create a Pokémon-inspired creature.\n"
@@ -44,13 +49,11 @@ def post_monster_maker():
         f"Appearance: {data['prompt']}.\n"
         "The design should clearly reflect its type and described behavior, and capture the essence of a unique, original Pokémon."
     )   
-    print("BACKEND PROMPT= ", prompt)
     try:
         result = imageclient.images.generate(
             model="gpt-image-1",
             prompt=prompt
         )
-        print("BACKEND GENERATION TEST")
         image_base64 = result.data[0].b64_json
 
         return jsonify({'image': image_base64})
@@ -119,8 +122,13 @@ def get_ai_monster_image(monster_id):
         monster = AI_Monster.query.filter_by(id= monster_id,user_id =current_user.id).first()
         if monster:
             img_str = base64.b64encode(monster.image).decode('utf-8')
-            
-            return jsonify({'image': img_str})
+            print("BACK END MONSTER= ")
+            return jsonify({
+                'image': img_str, 
+                'name': monster.name,
+                'attack': monster.attack,
+                'defense': monster.defense
+            })
         else:
             return jsonify({'error': 'monster\'s image not found'}), 404
 
@@ -154,7 +162,7 @@ def get_all_monster_images():
 @login_required 
 def delete_ai_monster(monster_id): 
     """
-    Delete a user
+    Delete an AI monster
     """
     monster = AI_Monster.query.filter_by(id=monster_id).first()
     if not monster: 

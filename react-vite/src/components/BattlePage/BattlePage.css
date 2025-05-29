@@ -1,0 +1,83 @@
+.UsersChoiceList {
+  display: flex;
+  flex-direction: column;      /* Stack items vertically */
+  gap: 32px;                   /* Space between boxes */
+  align-items: flex-start;     /* Align boxes to the left */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.UsersChoiceList li {
+  background: #f7f7f7;
+  border: 2px solid #ddd;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 180px;
+  width: 220px;                /* Fixed width for uniform boxes */
+  transition: box-shadow 0.2s;
+  margin: 0;
+}
+
+.UsersChoiceList li:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+}
+
+.UsersChoiceList h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.UsersChoiceList img {
+  max-width: 120px;
+  max-height: 120px;
+  transition: transform 0.2s;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  object-fit: contain;
+}
+
+.UsersChoiceList img:hover {
+  transform: scale(1.12);
+}
+
+.UsersChoiceList p {
+  margin: 2px 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.UsersFightingMonster {
+  display: flex;
+  flex-direction: column;
+  align-items: center;          /* Center content horizontally */
+  justify-content: center;      /* Center content vertically if needed */
+  background: #f7f7f7;
+  border: 2px solid #ddd;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 24px 32px;
+  margin: 32px 0 0 24px;
+  width: 320px;
+}
+
+.UsersFightingMonster img {
+  max-width: 180px;
+  max-height: 180px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  object-fit: contain;
+}
+
+.UsersFightingMonster h3,
+.UsersFightingMonster p {
+  margin: 4px 0;
+  text-align: center;           /* Center text within the box */
+  width: 100%;
+  font-size: 1.1rem;
+}
