@@ -18,6 +18,7 @@ def users_monster(monster_id):
     
     image = base64.b64encode(monster.image).decode('utf-8')
     monster = {
+        'id': monster.id,
         "name":  monster.name,
         "type_of": monster.type_of,
         "description" : monster.description,
@@ -42,6 +43,7 @@ def opponent_monster():
     
     image = base64.b64encode(monster.image).decode('utf-8')
     monster = {
+        'id': monster.id,
         "name":  monster.name,
         "type_of": monster.type_of,
         "description" : monster.description,
@@ -50,4 +52,4 @@ def opponent_monster():
         'image':image
     }
 
-    return jsonify({'monster': monster, }),200
+    return jsonify(monster),200

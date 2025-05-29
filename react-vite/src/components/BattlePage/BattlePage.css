@@ -52,11 +52,12 @@
   text-align: center;
 }
 
-.UsersFightingMonster {
+.UsersMonster,
+.OpponentMonster {
   display: flex;
   flex-direction: column;
-  align-items: center;          /* Center content horizontally */
-  justify-content: center;      /* Center content vertically if needed */
+  align-items: center;
+  justify-content: center;
   background: #f7f7f7;
   border: 2px solid #ddd;
   border-radius: 14px;
@@ -64,20 +65,53 @@
   padding: 24px 32px;
   margin: 32px 0 0 24px;
   width: 320px;
+  min-height: 340px;
+  transition: box-shadow 0.2s;
 }
 
-.UsersFightingMonster img {
+.OpponentMonster {
+  background: #f9f3e9;
+  border: 2px solid #e0b36a;
+  margin-left: 0;
+  margin-right: 24px;
+}
+
+.UsersMonster img,
+.OpponentMonster img {
   max-width: 180px;
   max-height: 180px;
   border-radius: 10px;
   margin-bottom: 16px;
   object-fit: contain;
+  border: 2px solid #e0e0e0;
+  background: #fff;
 }
 
-.UsersFightingMonster h3,
-.UsersFightingMonster p {
+.OpponentMonster img {
+  border: 2px solid #e0b36a;
+}
+
+.UsersMonster h3,
+.UsersMonster p,
+.OpponentMonster h3,
+.OpponentMonster p {
   margin: 4px 0;
-  text-align: center;           /* Center text within the box */
+  text-align: center;
   width: 100%;
   font-size: 1.1rem;
+}
+
+.OpponentMonster h3,
+.OpponentMonster p {
+  color: #8a5c1b;
+}
+
+@media (max-width: 800px) {
+  .UsersMonster,
+  .OpponentMonster {
+    width: 90vw;
+    min-width: unset;
+    margin: 24px auto 0 auto;
+    padding: 16px 8px;
+  }
 }

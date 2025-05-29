@@ -1,5 +1,5 @@
 // deletes AI gnerated monster
-export const deleteAiMonster = (monster_id) => async () => {
+export const deleteAiMonster = (monster_id) => async (dispatch) => {
     const response = await fetch(`/api/images/delete_ai_monster/${monster_id}`, {
         method: "DELETE",
         headers: { "Context-Type": "application/json" },
@@ -13,33 +13,40 @@ export const deleteAiMonster = (monster_id) => async () => {
 }
 
 
-const SET_USER_MONSTER = 'session/setUsersMonster';
+//set the users pokemon for the battle
+const SET_USER_MONSTER = 'aiMonster/setUsersMonster';
 export const setUserMonster = (monster) => ({
   type: SET_USER_MONSTER,
   payload: monster
 });
-export const getUsersMonster = (monster_id) => async () => {
-  const response = await fetch(`/battle/battle_page/users_monster/${monster_id}`, {
-      method: "GET",
-      headers: { "Context-Type": "application/json" },
-  });
-  dispatch(setUserMonster(response));
 
+export const getUsersMonster = (monster_id) => async (dispatch) => {
   
+  const request = await fetch(`/api/battle/battle_page/users_monster/${monster_id}`, {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
+  });
+  const response = await request.json();
+  console.log("THUNK TEST= " )
+  dispatch(setUserMonster(response));
+  console.log("AImonsters RESPONSE= ", response)
   return response;
 }
 
 
-const SET_OPPONENT_MONSTER = 'session/setOpponentMonster';
+// Set the monster a user will battle against
+const SET_OPPONENT_MONSTER = 'aiMonster/setOpponentMonster';
 export const setOpponentMonster = (monster) => ({
-  type: SET_USER_MONSTER,
+  type: SET_OPPONENT_MONSTER,
   payload: monster
 });
-export const getOpponentMonster = () => async () => {
-  const response = await fetch(`/battle/battle_page/opponent_monster`, {
+
+export const getOpponentMonster = () => async (dispatch) => {
+  const request = await fetch(`/api/battle/battle_page/opponent_monster`, {
       method: "GET",
-      headers: { "Context-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
   });
+  const response = await request.json();
   dispatch(setOpponentMonster(response));
 
   return response;

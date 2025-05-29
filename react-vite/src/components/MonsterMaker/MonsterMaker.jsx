@@ -18,7 +18,7 @@ export default function MonsterMaker() {
     const options = [ "Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting", "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost", "Dragon", "Dark", "Steel", "Fairy"];
 
 	//gnerate the monster image
-	const generateButton = async (e) => {
+	const generateButton = async () => {
 		setErrors(null);
 
 		try {
@@ -42,7 +42,7 @@ export default function MonsterMaker() {
 			setMonster(data.image);
 		} catch (err) {
 			setErrors("Request failed, please try again later.");
-		};	
+		}
 	}
 
 
@@ -82,7 +82,7 @@ export default function MonsterMaker() {
 			navigate("/profile")
 		} catch (err) {
 			setErrors("Request failed, please try again later.");
-		};
+		}
 	};
 
 

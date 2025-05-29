@@ -19,6 +19,7 @@ The goal of this project is to test implimenting a simple AI interface into a we
 * limit the number aof ai monsters to 3 per user
 * add loading indicator to create pokemon page
 * pass down user state from only nav bar to all other componenets
+* implament redux-persist for battles
 
 ## Notes
 
