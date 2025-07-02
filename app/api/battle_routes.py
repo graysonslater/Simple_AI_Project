@@ -22,12 +22,13 @@ def users_monster(monster_id):
         "name":  monster.name,
         "type_of": monster.type_of,
         "description" : monster.description,
+        "health": monster.health,
         "attack": monster.attack,
         "defense": monster.defense,
         'image':image
     }
 
-    return jsonify({'monster': monster, }),200
+    return jsonify(monster),200
 
 
 @battle_routes.route('/battle_page/opponent_monster', methods=['GET'])
@@ -47,6 +48,7 @@ def opponent_monster():
         "name":  monster.name,
         "type_of": monster.type_of,
         "description" : monster.description,
+        "health": monster.health,
         "attack": monster.attack,
         "defense": monster.defense,
         'image':image

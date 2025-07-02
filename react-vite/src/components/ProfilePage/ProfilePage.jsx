@@ -39,6 +39,7 @@ export default function ProfilePage(){
                     {user ? (user.ai_monsters.map((poke) => (
                         <li key={poke.id} className={`UserPoke${poke.id}`}>
                             <h3 className={`UserPoke${poke.name}`}>{poke.name}</h3>
+                            <p className={`UserPokeHealth${poke.name}`}>Health: {poke.health}</p>
                             <p className={`UserPokeAtt${poke.name}`}>Attack: {poke.attack}</p>
                             <p className={`UserPokeDff${poke.name}`}>Defense: {poke.defense}</p>
                             <DeleteAIMonster monsterId={poke.id} userId={user.id}/>

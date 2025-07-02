@@ -73,13 +73,16 @@ def post_save_monster():
     data = request.json
     att = random.randint(1, 100)
     deff = random.randint(1, 100)
+    hlth = random.randint(60, 100)
     image_data = base64.b64decode(data["image"])
 
     if not data.get("image"):
         return jsonify({"error": "Image is required."}), 400
    
-    print("BACKEND SAVE name= ", data["name"], " typeOf= ", data['typeOf'], "description= ", data['description'])
-    print("USER= ", current_user.id)
+    # users_pokemon = AI_Monster.query.filter(user_id=current_user.id).all()
+    # if users_pokemon == 7:
+        # return jsonify({"error": "Users Can only have 7 pokemon"}), 500
+
     try:
         monster = AI_Monster(
             name= data['name'],
@@ -87,12 +90,13 @@ def post_save_monster():
             type_of = data['typeOf'],
             description = data["description"],
             evolved = False,
+            health = hlth,
             image= image_data,
             attack= att,
             defense = deff,
             permanent = False
         )
-        print("BACKEND MONSTER= ", monster)
+
         db.session.add(monster)
         db.session.commit()
 
@@ -100,6 +104,7 @@ def post_save_monster():
             "name":  monster.name,
             "type_of": monster.type_of,
             "description" : monster.description,
+            "health": monster.health,
             "attack": monster.attack,
             "defense": monster.defense
         })
@@ -117,14 +122,16 @@ def get_ai_monster_image(monster_id):
     Query for a Monsters image using its ID
     Images must be quired seperately from the rest of the monsters data
     """
-    print("BACKEND TEST 1 IMAGE")
+
     try:
         monster = AI_Monster.query.filter_by(id= monster_id,user_id =current_user.id).first()
+        print("BACK END HEALTH TEST= ", monster.health)
         if monster:
             img_str = base64.b64encode(monster.image).decode('utf-8')
-            print("BACK END MONSTER= ")
+        
             return jsonify({
                 'image': img_str, 
+                'health': monster.health,
                 'name': monster.name,
                 'attack': monster.attack,
                 'defense': monster.defense

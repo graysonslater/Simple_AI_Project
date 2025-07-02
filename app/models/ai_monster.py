@@ -13,6 +13,7 @@ class AI_Monster(db.Model):
     type_of = db.Column(db.String(255), nullable=False)
     description = db.Column(db.String(255), nullable=False)
     evolved = db.Column(db.Boolean(), nullable=False)
+    health =  db.Column(db.Integer, nullable=False)
     image = db.Column(db.LargeBinary, nullable=False)
     attack =  db.Column(db.Integer, nullable=False)
     defense =  db.Column(db.Integer, nullable=False)
@@ -29,6 +30,7 @@ class AI_Monster(db.Model):
             'description': self.description,
             'evolved': self.evolved,
             'permanent': self.permanent,
+            'health': self.permanent,
             'attack': self.attack,
             'defense': self.defense,
             'image': self.image,
