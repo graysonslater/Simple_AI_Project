@@ -91,6 +91,7 @@ export default function MonsterImageBattlePage({
         }else{
             setoppMonsterHealth(Math.floor(health));
             opponentAttack()
+            setuserMonsterHealth(999);
             console.log("MBP USERATT TEST 2")
         };
     };

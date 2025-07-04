@@ -118,8 +118,10 @@ export default function BattlePage(){
                 {opponentMonster && (<div className="opponentsMon">
                     <MonsterImageBattlePage 
                         opponentMonster={opponentMonster}
-                        monsterId={chosenMonster}
                         oppMonsterHealth={oppMonsterHealth} 
+                        userMonsterHealth={userMonsterHealth}
+                        setuserMonsterHealth={setuserMonsterHealth}
+                        monsterId={chosenMonster} 
                         className={`OpponentmonsterBattling${opponentMonster.name}`}
                         showStats={true}
                         oppHTML={true}
