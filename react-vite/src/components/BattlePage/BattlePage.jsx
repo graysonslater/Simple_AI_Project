@@ -8,7 +8,7 @@ import "./BattlePage.css"
 export default function BattlePage(){
     const dispatch = useDispatch()
     const [chosenMonster, setChosenMonster ] = useState()
-    const [userMonsterHealth, setuserMonsterHealth ] = useState()
+    const [userMonsterHealth, setuserMonsterHealth ] = useState(111)
     const [oppMonsterHealth, setoppMonsterHealth ] = useState()
     const [healthCheck, setHealthCheck] = useState(false);
     
@@ -34,7 +34,7 @@ export default function BattlePage(){
         const oppMon = await dispatch(getOpponentMonster());
         const userMon = await dispatch(getUsersMonster(chosenMonster))
         setoppMonsterHealth(oppMon.health);
-        setuserMonsterHealth(userMon.health);
+        setuserMonsterHealth(111);
         
         setHealthCheck(false);
         
@@ -42,11 +42,14 @@ export default function BattlePage(){
 
 
     return (
-        <div className="BattlePageBox">
+        <div className="BattlePageMainBox">
             {/*Choose a monster to battle with - Show loading if user data isn't ready */}
             {!user ? (
             <div>Loading...</div>
+
             ) : !chosenMonster ? (
+            
+            // character selection screen - three clickable boxes of users poke
             <ul className="UsersChoiceList">
                 <h2>Choose your character!</h2>
                 {user.ai_monsters.map((poke) => (
@@ -60,16 +63,19 @@ export default function BattlePage(){
                             oppHTML={false}
                             onClick={() => setChosenMonster(poke.id)}
                         />
-                        <p className={`UserPokehealth${poke.name}`}>Health: {poke.health}</p>
+                        <p className={`UserPokehealth${poke.name}`}>Health: {}</p>
                         <p className={`UserPokeAtt${poke.name}`}>Attack: {poke.attack}</p>
                         <p className={`UserPokeDff${poke.name}`}>Defense: {poke.defense}</p>
-                        {opponentMonster && (<button className="UserAttackButton" onClick={() => userAttack()}>Generate Battle!</button>)}
+
+                        {/*This button does nothing????? */}
+                        {/* {opponentMonster && (<button className="UserAttackButton" onClick={() => userAttack()}>Generate Battle!</button>)} */}
+
                     </li>
                 ))}
             </ul>
-            ) : (
+            ) : ( //or condition - once you click on a monster this activates
 
-            // Monster is chosen, battling can begin
+            // Monster is chosen, battling can begin - appears after clicking image of monster you want initially
             <div className="FightingMonsters">
                 <div className="UsersMon">
                     <MonsterImageBattlePage 
@@ -118,9 +124,9 @@ export default function BattlePage(){
                 {opponentMonster && (<div className="opponentsMon">
                     <MonsterImageBattlePage 
                         opponentMonster={opponentMonster}
-                        oppMonsterHealth={oppMonsterHealth} 
-                        userMonsterHealth={userMonsterHealth}
-                        setuserMonsterHealth={setuserMonsterHealth}
+                        // oppMonsterHealth={oppMonsterHealth} 
+                        // userMonsterHealth={userMonsterHealth}
+                        // setuserMonsterHealth={setuserMonsterHealth}
                         monsterId={chosenMonster} 
                         className={`OpponentmonsterBattling${opponentMonster.name}`}
                         showStats={true}

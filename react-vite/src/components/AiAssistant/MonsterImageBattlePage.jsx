@@ -52,7 +52,7 @@ export default function MonsterImageBattlePage({
                     setDefense(data.defense);
                     setName(data.name);
                     setHealth(data.health);
-                    console.log("HEALTH TEST= ", health)
+                    console.log("HEALTH TEST= ", Number(health))
                     
                 }
             } catch (err) {
@@ -99,7 +99,7 @@ export default function MonsterImageBattlePage({
 
     if (!imgSrc) return <div>Loading...</div>;
     return (
-        <div className="FightingMonsters"> 
+        <div className="FightingMonsterDisplay"> 
             {!oppHTML ? (<div className={userList ? "usersMonster" : "userchosenMonBox"}>
                 <img src={imgSrc} alt={`Monster ${monsterId}`} onClick={onClick} style={{ cursor: 'pointer' }}/>
                 {showStats && (<>
