@@ -1,6 +1,7 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+import base64
 
 
 class User(db.Model, UserMixin):
@@ -44,7 +45,8 @@ class User(db.Model, UserMixin):
                 'evolved': monster.evolved,   
                 'health': monster.health,
                 'attack': monster.attack,
-                'defense': monster.defense
+                'defense': monster.defense,
+                'image': base64.b64encode(monster.image).decode('utf-8') if monster.image else None
             } for monster in self.ai_monsters]
 
         }

@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getOpponentMonster, resetOpponentMonster, getUsersMonster } from "../../redux/AImonsters";
+import BattlePageStage2 from "./BattlePageStage2";
 import MonsterImageBattlePage from "../AiAssistant/MonsterImageBattlePage";
 import "./BattlePage.css"
 
@@ -32,14 +33,14 @@ export default function BattlePage(){
 
     const handleOpponentMonster = async () => {
         const oppMon = await dispatch(getOpponentMonster());
-        const userMon = await dispatch(getUsersMonster(chosenMonster))
+        // const userMon = await dispatch(getUsersMonster(chosenMonster))
         setoppMonsterHealth(oppMon.health);
         setuserMonsterHealth(111);
         
         setHealthCheck(false);
         
     };
-
+// TEST comment
 
     return (
         <div className="BattlePageMainBox">
@@ -66,76 +67,81 @@ export default function BattlePage(){
                         <p className={`UserPokehealth${poke.name}`}>Health: {}</p>
                         <p className={`UserPokeAtt${poke.name}`}>Attack: {poke.attack}</p>
                         <p className={`UserPokeDff${poke.name}`}>Defense: {poke.defense}</p>
-
-                        {/*This button does nothing????? */}
-                        {/* {opponentMonster && (<button className="UserAttackButton" onClick={() => userAttack()}>Generate Battle!</button>)} */}
-
                     </li>
                 ))}
             </ul>
             ) : ( //or condition - once you click on a monster this activates
 
-            // Monster is chosen, battling can begin - appears after clicking image of monster you want initially
-            <div className="FightingMonsters">
-                <div className="UsersMon">
-                    <MonsterImageBattlePage 
-                        opponentMonster={opponentMonster}
-                        monsterId={chosenMonster} 
-                        healthCheck={healthCheck}
-                        setHealthCheck={setHealthCheck}
-                        userMonsterHealth={userMonsterHealth} 
-                        setuserMonsterHealth={setuserMonsterHealth}
-                        oppMonsterHealth={oppMonsterHealth}                       
-                        setoppMonsterHealth={setoppMonsterHealth}
-                        className={`UsermonsterBattling${chosenMonster}`}
-                        showStats={true}                      
-                        userList={false}
-                        oppHTML={false}
-                    />
-                </div>
-                <ul className="ChangeMonsterList">
-                    {user.ai_monsters.filter((poke) => poke.id !== chosenMonster).map((poke) => (
-                        <li key={poke.id} className={`StandbyPoke${poke.id}`}>
-                            <MonsterImageBattlePage
-                                className={`StandbyPokeImage${poke.id}`}
-                                monsterId={poke.id}
-                                userList={true}
-                                showStats={false}
-                                oppHTML={false}
-                                onClick={() => {if (!healthCheck) setChosenMonster(poke.id), setuserMonsterHealth(poke.health), setoppMonsterHealth(opponentMonster.health)}}
-                            />
-                        </li>
-                    ))}
-                </ul>
-                <div className="BattleButton">
-                    <button
-                        className="BattleButton"
-                        disabled={!healthCheck && opponentMonster}
-                        style={{
-                            backgroundColor: (!healthCheck && opponentMonster) ? '#ccc' : '#4CAF50',
-                            color: (!healthCheck && opponentMonster) ? '#888' : '#fff',
-                            cursor: (!healthCheck && opponentMonster) ? 'not-allowed' : 'pointer'
-                        }}
-                        onClick={() => handleOpponentMonster()}
-                        >
-                        {!healthCheck ? "Generate Battle!" : "Click for a new battle!"}
-                    </button>
-                </div>
-                {opponentMonster && (<div className="opponentsMon">
-                    <MonsterImageBattlePage 
-                        opponentMonster={opponentMonster}
-                        // oppMonsterHealth={oppMonsterHealth} 
-                        // userMonsterHealth={userMonsterHealth}
-                        // setuserMonsterHealth={setuserMonsterHealth}
-                        monsterId={chosenMonster} 
-                        className={`OpponentmonsterBattling${opponentMonster.name}`}
-                        showStats={true}
-                        oppHTML={true}
-                        userList={false}
-                    />
-                </div>)}
-            </div>           
+            <>
+                <BattlePageStage2 
+                    chosenMonster={chosenMonster}
+                />
+            </>           
             )}
         </div>
     )
 }
+
+
+// ! old code to be salvaged or scrapped later!!!
+// // Monster is chosen, battling can begin - appears after clicking image of monster you want initially
+//             <div className="FightingMonsters">
+//                 <div className="UsersMon">
+//                     <BattlePageStage2 />
+//                     {/* <MonsterImageBattlePage 
+//                         opponentMonster={opponentMonster}
+//                         monsterId={chosenMonster} 
+//                         healthCheck={healthCheck}
+//                         setHealthCheck={setHealthCheck}
+//                         userMonsterHealth={userMonsterHealth} 
+//                         setuserMonsterHealth={setuserMonsterHealth}
+//                         oppMonsterHealth={oppMonsterHealth}                       
+//                         setoppMonsterHealth={setoppMonsterHealth}
+//                         className={`UsermonsterBattling${chosenMonster}`}
+//                         showStats={true}                      
+//                         userList={false}
+//                         oppHTML={false}
+//                     /> */}
+//                 </div>
+//                 <ul className="ChangeMonsterList">
+//                     {user.ai_monsters.filter((poke) => poke.id !== chosenMonster).map((poke) => (
+//                         <li key={poke.id} className={`StandbyPoke${poke.id}`}>
+//                             <MonsterImageBattlePage
+//                                 className={`StandbyPokeImage${poke.id}`}
+//                                 monsterId={poke.id}
+//                                 userList={true}
+//                                 showStats={false}
+//                                 oppHTML={false}
+//                                 onClick={() => {if (!healthCheck) setChosenMonster(poke.id), setuserMonsterHealth(poke.health), setoppMonsterHealth(opponentMonster.health)}}
+//                             />
+//                         </li>
+//                     ))}
+//                 </ul>
+//                 <div className="BattleButton">
+//                     <button
+//                         className="BattleButton"
+//                         disabled={!healthCheck && opponentMonster}
+//                         style={{
+//                             backgroundColor: (!healthCheck && opponentMonster) ? '#ccc' : '#4CAF50',
+//                             color: (!healthCheck && opponentMonster) ? '#888' : '#fff',
+//                             cursor: (!healthCheck && opponentMonster) ? 'not-allowed' : 'pointer'
+//                         }}
+//                         onClick={() => handleOpponentMonster()}
+//                         >
+//                         {!healthCheck ? "Generate Battle!" : "Click for a new battle!"}
+//                     </button>
+//                 </div>
+//                 {opponentMonster && (<div className="opponentsMon">
+//                     {/* <MonsterImageBattlePage 
+//                         opponentMonster={opponentMonster}
+//                         // oppMonsterHealth={oppMonsterHealth} 
+//                         // userMonsterHealth={userMonsterHealth}
+//                         // setuserMonsterHealth={setuserMonsterHealth}
+//                         monsterId={chosenMonster} 
+//                         className={`OpponentmonsterBattling${opponentMonster.name}`}
+//                         showStats={true}
+//                         oppHTML={true}
+//                         userList={false}
+//                     /> */}
+//                 </div>)}
+//             </div>
