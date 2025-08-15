@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addFavoriteThunk, removeFavoriteThunk} from "../../../redux/session";
+import "./AddFovritePokeModal.css";
 
 
 // props must be passed in as an object!!!

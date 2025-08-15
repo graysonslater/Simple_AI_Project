@@ -62,8 +62,8 @@ export default function Navigation(){
                 </div>
             </div>
             
-            <NavLink className="navBarPoke" to="/pokemon/1" >
-                Pokemon Page 
+            <NavLink className="navBarPoke" to="/pokemon" >
+                Pokemon Grid 
             </NavLink>
         
             {/* If user logged in Display profile button else, login button */}

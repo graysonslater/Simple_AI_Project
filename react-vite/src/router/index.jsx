@@ -6,6 +6,7 @@ import PoemJokeDemo from '../components/PoemJokeDemo/PoemJokeDemo';
 import AutoResponseDemo from '../components/AutoResponseDemo/AutoResponseDemo';
 import DatabaseIntegrationDemo from '../components/DatabaseIntegrationDemo/DatabaseIntegrationDemo';
 import PokePage from '../components/PokePage/PokePage';
+import PokemonGrid from '../components/PokePage/PokemonGrid';
 import AgenticPokeSearch from '../components/AgenticPokeSearch/AgenticPokeSearch';
 import SimpleImageGeneration from '../components/SimpleImageGeneration/SimpleImageGeneration';
 import MonsterMaker from '../components/MonsterMaker/MonsterMaker';
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path:"/dataBaseIntegrationDemo",
         element: <DatabaseIntegrationDemo />
+      },
+      {
+        path:"/pokemon",
+        element: <PokemonGrid />
       },
       {
         path:"/pokemon/:pokeId",

@@ -6,22 +6,22 @@ Unfortunately the response times of the AI being used can take up to 1 or 2 minu
 
 ## TODO
 
-* styling for website
+* styling for website - done
 * fix error messages for edit user
 * verify CSRFProtect in the init file on backend - it is currently unused
 * add ability for users to add tags to certain pokemon and vet the tags for innapropriate content, spelling errors, etc
-* add a dependency that checks to make sure ai response being added to html is safe
-* create an all pokemon page
-* add redo feature to all AI
-* display AI poke in same list as reglar poke
-* order poke on profile page by att or dff or date created 
-* add error messages that appear when creating a monster
+* add a dependency that checks to make sure ai response being added to html is safe 
+* create an all pokemon page - done
+* add redo feature to all AI - done
+* display AI poke in same list as reglar poke - done
+* order poke on profile page by att or dff or date created - canceled
+* add error messages that appear when creating a monster - done
 * add error messages when logging in 
 * delete poke images after 3 days
-* limit the number aof ai monsters to 3 per user
-* add loading indicator to create pokemon page
-* pass down user state from only nav bar to all other componenets
-* implament redux-persist for battles
+* limit the number aof ai monsters to 3 per user - done
+* add loading indicator to create pokemon page - done
+* pass down user state from only nav bar to all other componenets - canceled
+* implament redux-persist for battles - done
 
 ## Notes
 
@@ -131,7 +131,7 @@ Unfortunately the response times of the AI being used can take up to 1 or 2 minu
     
     ```SCHEMA=flask_schema (or whatever schema name you want)```
     
-    ```DEEPSEEK_API_KEY=sk-8d59f937022948ba94960876a0511848```
+    ```DEEPSEEK_API_KEY=sk-8d59f937022948ba94960876a0511848``` - Note: this is the old deepseek key i used, the new one is shown inthe .env file
 
 7. Get into your pipenv, migrate your database, seed your database, and run your
    Flask app:
@@ -297,6 +297,18 @@ allows users to interact with ZIP files
 It provides backward compatibility for newer features in older Python versions
 
 supports iterating through ZIP contents, including nested directories
+
+    openai==1.34.0
+
+Official Python library for accessing OpenAI’s API to use models like GPT.
+
+    python-dotenv==0.21.0
+
+Loads environment variables from a .env file to manage app configuration securely.
+
+    httpx==0.27.0
+
+A fast, modern HTTP client for Python with sync and async support, used for making API requests.
 
 ## React-Vite dependencies
 

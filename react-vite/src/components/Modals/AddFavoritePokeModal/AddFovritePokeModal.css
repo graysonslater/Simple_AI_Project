@@ -1,0 +1,28 @@
+.AddFavoritePokeMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PokeFavoriteButton,
+.PokeRemoveFavButton {
+    position: relative !important;
+    background: white !important;
+    border: 2px solid #000 !important;
+    border-radius: 0 !important;
+    padding: 0.5rem 1rem !important;
+    cursor: pointer !important;
+    font-size: 0.9rem !important;
+    font-weight: bold !important;
+    transition: all 0.2s ease !important;
+    color: #000 !important;
+    margin: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.PokeFavoriteButton:hover,
+.PokeRemoveFavButton:hover {
+    background: #c7ff19 !important;
+    color: #000 !important;
+}

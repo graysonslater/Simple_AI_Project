@@ -40,8 +40,10 @@ export default function LogoutModal(){
                 {showLogout && (
                     <CustomModal onClose={(e) => logoutToggle(e)}>
                         <p>Are you sure you want to logout?</p>
-                        <button onClick={handleLogout}>Logout</button>
-                        <button onClick={logoutToggle}>Cancel</button>
+                        <div className="buttonContainer">
+                            <button onClick={handleLogout}>Logout</button>
+                            <button onClick={logoutToggle}>Cancel</button>
+                        </div>
                     </CustomModal>
                 )}
             </div>

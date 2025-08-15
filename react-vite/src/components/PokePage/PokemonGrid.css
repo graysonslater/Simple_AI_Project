@@ -1,0 +1,80 @@
+.grid-pokemon-container {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    background: white;
+}
+
+.grid-title {
+    display: none;
+}
+
+.grid-pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0;
+    padding: 0;
+    width: 100%;
+    background: white;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.grid-pokemon-card {
+    background: white;
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    aspect-ratio: 1;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.grid-pokemon-card:hover {
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+.grid-pokemon-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.pokemon-info {
+    display: none;
+}
+
+.grid-loading, .grid-error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+    padding: 40px;
+    background: white;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.grid-error {
+    color: #e74c3c;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .grid-pokemon-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .grid-pokemon-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0;
+    }
+}

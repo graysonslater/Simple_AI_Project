@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom/dist/umd/react-router-dom.development";
+import { useParams, useNavigate } from "react-router-dom/dist/umd/react-router-dom.development";
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import AddFavoritePokeModal from "../Modals/AddFavoritePokeModal/AddFavoritePokeModal";
@@ -8,8 +8,10 @@ import "./PokePage.css"
 export default function PokePage(){
     const [loading, setLoading] = useState(false);
     const [currentPoke, setCurrentPoke] = useState();
+    const [error, setError] = useState(null);
     const {pokeId} = useParams();
     const user = useSelector((state) => state.session.user);
+    const navigate = useNavigate();
 
     useEffect(() => {
         // make  handler event inside the useEffect
@@ -47,20 +49,59 @@ export default function PokePage(){
     }, [pokeId]);
     
     return(
-        <div className="PokeMainBox">
+        <div className="poke-profile-container">
+            <div className="poke-header">
+                <h1 className="poke-title">{currentPoke ? currentPoke.name.toUpperCase() : 'POKEMON'}</h1>
+            </div>
+            <div className="poke-separator"></div>
+            
             {loading ? (
-                <p>Loading...</p>
+                <div className="poke-content">
+                    <p>Loading...</p>
+                </div>
+            ) : error ? (
+                <div className="poke-content">
+                    <p>Error: {error}</p>
+                </div>
             ) : currentPoke ? (
-                <>  
-                    {console.log("POKE PAGE POKE TEST= ", currentPoke)}
-                    <h1 className="PokeName">{currentPoke.name}</h1>
-                    <h3 className="Poketype">{currentPoke.type_of}</h3>
-                    <img src={currentPoke.image} alt={currentPoke.name} className="PokePhoto"></img>
-                    <p className="PokeDescription">{currentPoke.description}</p>
-                    {user && (<AddFavoritePokeModal pokeId={currentPoke.id}/>)}
-                </>
+                <div className="poke-content">
+                    <button 
+                        className="back-button" 
+                        onClick={() => navigate('/pokemon')}
+                    >
+                        Pokemon Grid
+                    </button>
+                    
+                    <div className="poke-stats">
+                        <div className="stat-item">
+                            <div className="stat-marker"></div>
+                            <span className="stat-label">Type:</span>
+                            <span className="stat-value">{currentPoke.type_of}</span>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-marker"></div>
+                            <span className="stat-label">Evolved:</span>
+                            <span className="stat-value">{currentPoke.evolved ? 'Yes' : 'No'}</span>
+                        </div>
+                        <div className="stat-item">
+                            <div className="stat-marker"></div>
+                            <span className="stat-label">Description:</span>
+                            <span className="stat-value">{currentPoke.description}</span>
+                        </div>
+                    </div>
+                    
+                    <div className="poke-image-container">
+                        <img src={currentPoke.image} alt={currentPoke.name} className="poke-image"></img>
+                    </div>
+                    
+                    <div className="poke-actions">
+                        {user && <AddFavoritePokeModal pokeId={currentPoke.id}/>}
+                    </div>
+                </div>
             ) : (
-                <p>No Pokémon found.</p>
+                <div className="poke-content">
+                    <p>No Pokémon found.</p>
+                </div>
             )}
         </div>
     )

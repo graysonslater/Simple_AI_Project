@@ -17,14 +17,15 @@ def get_pokemon_by_Id(pokeId):
 
 
 @pokemon_routes.route('allPokemon', methods=["GET"])
-def get_all_pokemon(pokeId):
+def get_all_pokemon():
     """
-    Query a pokemon by ID
+    Query ALL POKEMON
     """
-    poke = Pokemon.query.filter_by(id=pokeId).first()
+    poke = Pokemon.query.all()
     if not poke:
-        return None
-    return jsonify(poke.to_dict())
+        return jsonify({"error": "Unable to access Pokemon DB"}), 404
+        
+    return jsonify([pokemon.to_dict() for pokemon in poke])
 
 
 @pokemon_routes.route('/addFavorite', methods=["POST"])
