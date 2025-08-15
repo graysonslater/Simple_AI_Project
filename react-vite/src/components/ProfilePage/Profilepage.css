@@ -1,12 +1,333 @@
-/* Limit all profile page images to a reasonable size */
+/* Profile Page Styling - Matching Application Design System */
+
+/* Main Profile Container */
+.ProfilePageBox {
+  background: white;
+  min-height: 100vh;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+}
+
+/* Profile Information Section */
+.ProfileUserInfo {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Section Headers */
+.ProfilePageBox h2 {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  color: #111;
+  margin: 0 0 30px 0;
+  position: relative;
+}
+
+/* Green Line Under Headers */
+.ProfilePageBox h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100px;
+  height: 4px;
+  background: #c7ff19;
+}
+
+/* User Details Section */
+.user-details {
+  background: #f8f8f8;
+  border: 2px solid #ddd;
+  border-radius: 0;
+  padding: 30px;
+}
+
+.user-details p {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #111;
+  margin: 0 0 15px 0;
+  padding: 15px 20px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 0;
+}
+
+.user-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* Pokemon and AI Monsters Sections */
+.pokemon-section,
+.ai-monsters-section {
+  margin-top: 20px;
+}
+
+/* Pokemon Lists */
+.UsersPokeList,
+.UsersAIList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+/* Individual Pokemon/AI Monster Items */
+.UsersPokeList li,
+.UsersAIList li,
+.pokemon-item,
+.ai-monster-item {
+  background: white;
+  border: 2px solid #111;
+  border-radius: 0;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.UsersPokeList li:hover,
+.UsersAIList li:hover,
+.pokemon-item:hover,
+.ai-monster-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border-color: #c7ff19;
+}
+
+/* Pokemon/Monster Names */
+.UsersPokeList h3,
+.UsersAIList h3,
+.pokemon-item h3,
+.ai-monster-item h3 {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: #111;
+  margin: 0 0 20px 0;
+  text-align: center;
+  background: #111;
+  color: white;
+  padding: 12px 20px;
+  position: relative;
+}
+
+/* Green Line Under Monster Names */
+.UsersPokeList h3::after,
+.UsersAIList h3::after,
+.pokemon-item h3::after,
+.ai-monster-item h3::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #c7ff19;
+}
+
+/* Monster Stats Container */
+.monster-stats {
+  margin: 20px 0;
+}
+
+/* Monster Actions Container */
+.monster-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* Pokemon Images */
 .ProfilePokePhoto,
 .UsersAIList img {
-  max-width: 300px;
-  max-height: 300px;
+  max-width: 100%;
+  max-height: 250px;
   width: auto;
   height: auto;
   object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 20px 0;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.ProfilePokePhoto:hover,
+.UsersAIList img:hover {
+  border-color: #c7ff19;
+  transform: scale(1.05);
+}
+
+/* Monster Stats */
+.UsersAIList p,
+.monster-stats p {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #111;
   margin: 8px 0;
+  padding: 8px 12px;
+  background: #f8f8f8;
+  border-left: 3px solid #c7ff19;
+  border-radius: 0;
+}
+
+/* Button Styling */
+.ProfileUserInfo button,
+.UsersPokeList button,
+.UsersAIList button,
+.user-actions button {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid #111;
+  border-radius: 0;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  margin: 5px;
+}
+
+/* Primary Button Style */
+.user-actions button:first-of-type {
+  background: #111;
+  color: white;
+}
+
+.user-actions button:first-of-type:hover {
+  background: #c7ff19;
+  color: #111;
+  border-color: #c7ff19;
+}
+
+/* Secondary Button Style */
+.user-actions button:last-of-type {
+  background: none;
+  color: #111;
+}
+
+.user-actions button:last-of-type:hover {
+  background: #111;
+  color: white;
+}
+
+/* Delete Button Style */
+.UsersAIList button,
+.monster-actions button {
+  background: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+}
+
+.UsersAIList button:hover,
+.monster-actions button:hover {
+  background: #c0392b;
+  border-color: #c0392b;
+}
+
+/* Loading State */
+.loading-state {
+  font-style: italic;
+  color: #666;
+  text-align: center;
+  padding: 40px;
+  font-size: 1.1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ProfilePageBox {
+    padding: 40px 20px;
+  }
+  
+  .ProfilePageBox h2 {
+    font-size: 2.5rem;
+  }
+  
+  .UsersPokeList,
+  .UsersAIList {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .user-details {
+    padding: 20px;
+  }
+  
+  .user-details p {
+    padding: 12px 15px;
+    font-size: 1rem;
+  }
+  
+  .UsersPokeList li,
+  .UsersAIList li,
+  .pokemon-item,
+  .ai-monster-item {
+    padding: 20px;
+  }
+  
+  .UsersPokeList h3,
+  .UsersAIList h3,
+  .pokemon-item h3,
+  .ai-monster-item h3 {
+    font-size: 1.5rem;
+    padding: 10px 15px;
+  }
+  
+  .user-actions {
+    flex-direction: column;
+  }
+  
+  .monster-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .ProfilePageBox {
+    padding: 30px 15px;
+  }
+  
+  .ProfilePageBox h2 {
+    font-size: 2rem;
+  }
+  
+  .ProfileUserInfo {
+    gap: 30px;
+  }
+  
+  .UsersPokeList li,
+  .UsersAIList li,
+  .pokemon-item,
+  .ai-monster-item {
+    padding: 15px;
+  }
+  
+  .user-details {
+    padding: 15px;
+  }
 }

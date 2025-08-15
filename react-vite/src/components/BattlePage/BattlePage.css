@@ -1,32 +1,130 @@
-/* Battle Page Container */
+/* Battle Page Container - Matching application design system */
 .BattlePageBox {
-  padding: 20px;
-  max-width: 1200px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Main title styling - matching application Title style */
+.BattlePageBox h1 {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 4.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin: 0 0 40px 0;
+  line-height: 1.05;
+  color: #111;
+  text-align: center;
+}
+
+/* Battle Page Main Box - for the overall container */
+.BattlePageMainBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* "Choose your character!" title styling - matching home page Title style but smaller and on one line */
+.BattlePageMainBox h2 {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin: 0 0 30px 0;
+  line-height: 1.05;
+  color: #111;
+  text-align: center;
 }
 
 /* Monster Selection Grid */
 .UsersChoiceList {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
   padding: 0;
   list-style: none;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
 }
 
-/* Individual Monster Selection Box */
+/* Individual Monster Selection Box - matching application box style */
 .UsersChoiceList li {
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   text-align: center;
-  transition: transform 0.2s;
-  background: #f8f8f8;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  height: 320px; /* Fixed height to make boxes shorter */
 }
 
 .UsersChoiceList li:hover {
-  transform: scale(1.05);
-  border-color: #ff4444;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Monster selection box header */
+.UsersChoiceList li::before {
+  content: attr(data-monster-name);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Monster selection content */
+.UsersChoiceList li > div {
+  padding: 20px;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  height: calc(100% - 50px); /* Subtract header height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Monster name styling */
+.UsersChoiceList li h3,
+.UsersChoiceList li h4 {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  color: #111;
+  font-weight: 600;
+  margin: 0 0 15px 0;
+}
+
+/* Monster image container */
+.UsersChoiceList li .monster-image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
 }
 
 /* Battle Layout */
@@ -34,58 +132,786 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 40px;
-  margin-top: 30px;
+  gap: 60px;
+  margin: 40px 0;
+  width: 100%;
+  max-width: 1200px;
 }
 
-/* User/Opponent Monster Containers */
+/* User/Opponent Monster Containers - matching application box style */
 .UsersMon, .opponentsMon {
-  border: 3px solid #4a90e2;
-  border-radius: 15px;
-  padding: 20px;
-  width: 300px;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  width: 400px;
   text-align: center;
-  background: white;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.opponentsMon {
-  border-color: #ff4444;
+.UsersMon:hover, .opponentsMon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Battle Button Styling */
+/* Monster container headers */
+.UsersMon::before {
+  content: 'Your Monster';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.opponentsMon::before {
+  content: 'Opponent Monster';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #ff4444;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+/* Monster container content */
+.UsersMon > div, .opponentsMon > div {
+  padding: 30px;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Battle Button Styling - matching application button style */
 .BattleButton {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 40px 0;
 }
 
 .BattleButton button {
-  padding: 12px 24px;
-  font-size: 1.2rem;
-  background: #4CAF50;
-  color: white;
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: #111;
+  color: #fff;
   border: none;
-  border-radius: 25px;
+  border-radius: 0;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .BattleButton button:hover {
-  background: #45a049;
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
 }
 
 /* Image Sizing */
 .UsersChoiceList img, 
 .FightingMonsters img {
-  max-width: 150px;
+  max-width: 180px;
   height: auto;
   margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* Stats Styling */
+/* Stats Styling - matching application text style */
 .UserPokeAtt, .UserPokeDff, .oppPokehealth,
 .OppMonsterAtt, .OppMonsterDff {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-weight: 600;
+  margin: 8px 0;
+  color: #444;
+  font-size: 1rem;
+}
+
+/* BattlePageStage2 Styles - matching application design */
+.FightingMonsterDisplay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.FightingMonsterDisplay h1 {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin: 0 0 40px 0;
+  line-height: 1.05;
+  color: #111;
+  text-align: center;
+}
+
+.BattleLayout {
+  display: flex;
+  gap: 60px;
+  margin-bottom: 40px;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.LeftSide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.CenterSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px;
+  padding: 30px;
+}
+
+.RightSide {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Selected Monster Container - matching application box style */
+.SelectedMonsterContainer {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+}
+
+.SelectedMonsterContainer::before {
+  content: attr(data-monster-name);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.SelectedMonsterContainer h2 {
+  text-align: center;
+  color: #111;
+  margin-bottom: 20px;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.SelectedMonsterStats {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 30px;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+}
+
+.SelectedMonsterImage {
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.SelectedMonsterImage.Fainted {
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+.MonsterStats {
+  flex: 1;
+  min-width: 250px;
+}
+
+.MonsterStats h3 {
+  color: #111;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #c7ff19;
+  padding-bottom: 5px;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.MonsterStats p {
+  margin: 8px 0;
+  font-size: 1.1rem;
+  color: #444;
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-weight: 500;
+}
+
+/* Other Monsters Container - matching application box style */
+.OtherMonstersContainer {
+  border-radius: 0;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 500px;          /* fixed starting width */
+  height: 500px;         /* fixed starting height */
+  min-width: 500px;      /* cannot go below this width */
+  min-height: 500px;     /* cannot go below this height */
+  box-sizing: border-box;
+}
+
+.OtherMonstersContainer::before {
+  content: 'Other Monsters';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.OtherMonstersContainer h3 {
+  text-align: center;
+  color: #111;
+  margin: 20px 30px 15px 30px;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.OtherMonstersList {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 50px;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  min-height: 300px;
+  box-sizing: border-box;
+
+}
+
+
+.OtherMonstersList {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 50px;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  min-height: 300px;
+  box-sizing: border-box;
+}
+
+.OtherMonsterItem {
+  text-align: center;
+  padding: 20px;
+  border-radius: 0;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 2px solid transparent;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.OtherMonsterItem:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  border-color: #c7ff19;
+}
+
+.OtherMonsterItem.Fainted {
+  opacity: 0.6;
+  background: #f5f5f5;
+}
+
+.OtherMonsterItem.Fainted:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-color: transparent;
+}
+
+.OtherMonsterImage {
+  max-width: 150px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.OtherMonsterImage.Fainted {
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+.OtherMonsterName {
+  margin: 8px 0 0 0;
   font-weight: bold;
-  margin: 5px 0;
+  color: #111;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.OtherMonsterHealth {
+  margin: 4px 0 0 0;
+  font-size: 0.9rem;
+  color: #666;
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+}
+
+/* Battle Button Container */
+.BattleButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.GenerateBattleButton {
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.GenerateBattleButton:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.GenerateBattleButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.GenerateBattleButton.Disabled {
+  background: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.GenerateBattleButton.Disabled:hover {
+  background: #ccc;
+  transform: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Opponent Monster Container - matching application box style */
+.OpponentMonsterContainer {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 500px;
+}
+
+.OpponentMonsterContainer::before {
+  content: 'Opponent Monster';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #ff4444;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.OpponentMonsterContainer h2 {
+  text-align: center;
+  color: #111;
+  margin-bottom: 20px;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.OpponentMonsterStats {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 30px;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+}
+
+.OpponentMonsterImage {
+  max-width: 200px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.OpponentMonsterImage.Fainted {
+  filter: grayscale(100%);
+  opacity: 0.6;
+}
+
+/* Fainted Status Styles */
+.FaintedStatus {
+  color: #ff4444;
+  font-weight: bold;
+  font-size: 1.1em;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.LoseStatus {
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  animation: pulse 2s infinite;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+/* Attack Button Styles - matching application button style */
+.AttackButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.AttackButton {
+  padding: 15px 30px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.AttackButton:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.AttackButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Battle Result Container - matching application box style */
+.BattleResultContainer {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 40px 0;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+}
+
+.BattleResultContainer::before {
+  content: 'Battle Result';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+.BattleResultContainer h2 {
+  color: #111;
+  margin-bottom: 15px;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+}
+
+.WinnerMessage {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #111;
+  margin: 0;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 30px;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Responsive design - matching application breakpoints */
+@media (max-width: 1100px) {
+  .BattlePageBox,
+  .FightingMonsterDisplay,
+  .BattlePageMainBox {
+    padding: 30px 15px;
+  }
+  
+  .BattlePageBox h1,
+  .FightingMonsterDisplay h1 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .BattlePageMainBox h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+  
+  .UsersChoiceList {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    max-width: 600px;
+  }
+  
+  .UsersChoiceList li {
+    height: 300px; /* Slightly shorter on medium screens */
+  }
+  
+  .BattleLayout {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .FightingMonsters {
+    flex-direction: column;
+    gap: 30px;
+  }
+  
+  .UsersMon, .opponentsMon {
+    width: 100%;
+    max-width: 500px;
+  }
+  
+  .SelectedMonsterContainer,
+  .OpponentMonsterContainer,
+  .OtherMonstersContainer {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .BattlePageBox,
+  .FightingMonsterDisplay,
+  .BattlePageMainBox {
+    padding: 20px 10px;
+  }
+  
+  .BattlePageBox h1,
+  .FightingMonsterDisplay h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+  
+  .BattlePageMainBox h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+  
+  .UsersChoiceList {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 400px;
+  }
+  
+  .UsersChoiceList li {
+    height: 280px; /* Slightly shorter on mobile */
+  }
+  
+  .BattleLayout {
+    gap: 20px;
+  }
+  
+  .FightingMonsters {
+    gap: 20px;
+  }
+  
+  .SelectedMonsterStats,
+  .OpponentMonsterStats {
+    padding: 20px;
+  }
+  
+  .OtherMonstersList {
+    padding: 40px;
+  }
+  
+  .OtherMonsterItem {
+    min-height: 180px;
+    padding: 15px;
+  }
+  
+  .OtherMonsterImage {
+    max-width: 120px;
+  }
+}
+
+/* Animation for content loading - matching application animations */
+.UsersChoiceList li,
+.SelectedMonsterContainer,
+.OpponentMonsterContainer,
+.OtherMonstersContainer,
+.BattleResultContainer {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus states for accessibility - matching application focus states */
+.UsersChoiceList li:focus-within,
+.SelectedMonsterContainer:focus-within,
+.OpponentMonsterContainer:focus-within,
+.OtherMonstersContainer:focus-within,
+.BattleResultContainer:focus-within {
+  outline: 3px solid #c7ff19;
+  outline-offset: 2px;
+}
+
+/* Print styles - matching application print styles */
+@media print {
+  .BattlePageBox,
+  .FightingMonsterDisplay {
+    background: white;
+    padding: 0;
+  }
+  
+  .UsersChoiceList li,
+  .SelectedMonsterContainer,
+  .OpponentMonsterContainer,
+  .OtherMonstersContainer,
+  .BattleResultContainer {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
 }

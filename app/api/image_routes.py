@@ -3,8 +3,11 @@ from flask_login import login_required, current_user
 from openai import OpenAI
 from sqlalchemy.exc import IntegrityError
 from app.models import AI_Monster, db
+from dotenv import load_dotenv
 import base64, os, random
 
+# Load environment variables from .env file
+load_dotenv()
 
 image_routes = Blueprint('image', __name__)
 
@@ -47,7 +50,7 @@ def post_monster_maker():
         f"Type: {data['typeOf']}.\n"
         f"Description: {data['description']}.\n"
         f"Appearance: {data['prompt']}.\n"
-        "The design should clearly reflect its type and described behavior, and capture the essence of a unique, original Pokémon."
+        "The design should clearly reflect its type and described behavior, and capture the essence of a unique, original Pokémon. Do not include any words in the image, only the image itself."
     )   
     try:
         result = imageclient.images.generate(

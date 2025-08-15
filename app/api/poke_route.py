@@ -16,6 +16,17 @@ def get_pokemon_by_Id(pokeId):
     return jsonify(poke.to_dict())
 
 
+@pokemon_routes.route('allPokemon', methods=["GET"])
+def get_all_pokemon(pokeId):
+    """
+    Query a pokemon by ID
+    """
+    poke = Pokemon.query.filter_by(id=pokeId).first()
+    if not poke:
+        return None
+    return jsonify(poke.to_dict())
+
+
 @pokemon_routes.route('/addFavorite', methods=["POST"])
 @login_required
 def post_favorite():

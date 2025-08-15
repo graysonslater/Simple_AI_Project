@@ -1,0 +1,325 @@
+/* MonsterMaker Component Styles - Matching SimpleImageGeneration design */
+
+/* Main container */
+.MonsterMakerMainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Main title styling - matching SimpleImageGeneration Title */
+.MonsterMakerTitle {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin: 0 0 40px 0;
+  line-height: 1.05;
+  color: #111;
+  text-align: center;
+}
+
+/* Monster maker text styling - matching SimpleImageGeneration sigText style */
+.monsterMakerText {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #444;
+  font-weight: 400;
+  margin: 0 0 40px 0;
+  text-align: center;
+  max-width: 800px;
+  line-height: 1.4;
+}
+
+/* Monster image display box - positioned above the form box */
+.monsterImageDisplayBox {
+  width: 100%;
+  max-width: 800px;
+  height: 800px;
+  margin-bottom: 40px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a header section like the SimpleImageGeneration box */
+.monsterImageDisplayBox::before {
+  content: 'Generated Monster';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+/* Placeholder text when no monster is generated */
+.monsterPlaceholderText {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  color: #888;
+  font-weight: 400;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 30px; /* Adjust for header height */
+}
+
+/* Generated monster image styling */
+.monsterImageDisplayBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 60px; /* Account for header height */
+}
+
+/* Container for the monster maker form - matching SimpleImageGeneration box style */
+.MonsterMakerBox {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a header section like SimpleImageGeneration boxes */
+.MonsterMakerBox::before {
+  content: 'Monster Maker AI';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+/* Form content area styling - matching SimpleImageGeneration content area */
+.monsterFormContent {
+  padding: 30px;
+  background: #fff;
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Form styling */
+.monsterFormContent h2 {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  color: #444;
+  font-weight: 600;
+  margin: 20px 0 10px 0;
+}
+
+.monsterFormContent label {
+  display: block;
+  margin-bottom: 20px;
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 400;
+}
+
+.monsterFormContent input,
+.monsterFormContent select {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.monsterFormContent input:focus,
+.monsterFormContent select:focus {
+  outline: none;
+  border-color: #c7ff19;
+  box-shadow: 0 0 0 2px rgba(199, 255, 25, 0.2);
+}
+
+/* Button styling */
+.GenerateButton,
+.monsterFormContent button {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  margin: 10px 10px 10px 0;
+  border-radius: 4px;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.GenerateButton:hover,
+.monsterFormContent button:hover {
+  background: #333;
+}
+
+.GenerateButton:disabled,
+.monsterFormContent button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Spinner animation for generating state */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design - matching SimpleImageGeneration breakpoints */
+@media (max-width: 1100px) {
+  .MonsterMakerMainPage {
+    padding: 30px 15px;
+  }
+  
+  .MonsterMakerTitle {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .monsterMakerText {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+  
+  .monsterImageDisplayBox {
+    max-width: 100%;
+    height: 700px;
+    margin-bottom: 30px;
+  }
+  
+  .MonsterMakerBox {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .monsterFormContent {
+    padding: 20px;
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .MonsterMakerMainPage {
+    padding: 20px 10px;
+  }
+  
+  .MonsterMakerTitle {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+  
+  .monsterMakerText {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+  
+  .monsterImageDisplayBox {
+    margin-bottom: 25px;
+    height: 600px;
+  }
+  
+  .monsterFormContent {
+    padding: 15px;
+    min-height: 120px;
+  }
+}
+
+/* Animation for content loading */
+.MonsterMakerBox > div {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.monsterImageDisplayBox {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus states for accessibility */
+.MonsterMakerBox:focus-within {
+  outline: 3px solid #c7ff19;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .MonsterMakerMainPage {
+    background: white;
+    padding: 0;
+  }
+  
+  .monsterImageDisplayBox {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+  
+  .MonsterMakerBox {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+}

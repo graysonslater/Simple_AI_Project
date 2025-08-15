@@ -7,8 +7,42 @@ from app.models import Pokemon, Tags, db
 ai_routes = Blueprint('ai', __name__)
 
 load_dotenv()
-DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY')
+DEEPSEEK_API_KEY = os.getenv('Deep_Key')
+print("ENV TEST: ", os.getenv('Deep_Key'))
 client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
+print("DS KEY TEST: ",DEEPSEEK_API_KEY )
+
+@ai_routes.route('/deepseektest', methods=['POST']) #!note the method is post!!!
+def get_test():
+    """
+    a test
+    """
+    # Get input data from front end
+    data = request.json
+
+    # get user input from data
+    user_query = data.get('query', '')
+
+    try:
+        # generate the gpt response
+        response = client.chat.completions.create(
+            # define AI model
+            model="deepseek-chat",  
+            messages=[
+                # Role specifies who is sending the message, Content specifies the text/instruction being sent, tools is a third option which refrences external tools or functions
+                {"role": "system", "content": "You are a helpful assistant."}, #this will alter how the gpt repsonds EX; "you are a pirate", will cause the gpt to respond like a pirate
+                {"role": "user", "content": user_query}
+            ],
+            # return entire response at once, not word by word as it comes in 
+            stream=False
+        )
+
+        # select the text from the "response" and return it  to the frontend
+        return jsonify(response.choices[0].message.content), 200 #see notes as to why you choose choices[0]
+    
+    # used for errors
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @ai_routes.route('/poems', methods=['POST']) #!note the method is post!!!

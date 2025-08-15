@@ -19,9 +19,9 @@ function PoemComponent(){
     //handle the submission of a query to the backend 
     //!could this be made a seperate component and imported???
     const handleSubmit = async () => {
-        console.log("TESTING!!!!!!!!")
-        // if no query return notjhing
-        if (!query.trim) return;
+        
+        // if no query return nothing
+        if (!query.trim()) return;
 
         //set loading state 
         setLoading(true);

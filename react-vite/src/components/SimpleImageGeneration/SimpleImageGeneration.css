@@ -1,0 +1,257 @@
+/* SimpleImageGeneration Component Styles - Matching AgenticPokeSearch design */
+
+/* Main container */
+.SIGMainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Main title styling - matching AgenticPokeSearch Title */
+.SIGTitle {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin: 0 0 40px 0;
+  line-height: 1.05;
+  color: #111;
+  text-align: center;
+}
+
+/* SIG text styling - matching AgenticPokeSearch agenticPokeText style */
+.sigText {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #444;
+  font-weight: 400;
+  margin: 0 0 40px 0;
+  text-align: center;
+  max-width: 800px;
+  line-height: 1.4;
+}
+
+/* Image display box - positioned above the AI box */
+.imageDisplayBox {
+  width: 100%;
+  max-width: 800px;
+  height: 800px;
+  margin-bottom: 40px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Add a header section like the AI box */
+.imageDisplayBox::before {
+  content: 'Generated Image';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+/* Placeholder text when no image is generated */
+.placeholderText {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  color: #888;
+  font-weight: 400;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 30px; /* Adjust for header height */
+}
+
+/* Generated image styling */
+.imageDisplayBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-top: 60px; /* Account for header height */
+}
+
+/* Container for the AI section - matching AgenticPokeSearch box style */
+.SIGBox {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect removed - box will not raise up */
+
+/* Add a header section like AgenticPokeSearch boxes */
+.SIGBox::before {
+  content: 'Simple Image Generation AI';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+/* Content area styling - matching AgenticPokeSearch content area */
+.SIGBox > div {
+  padding: 30px;
+  background: #fff;
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Ensure input sections span full width */
+.SIGBox .InputSection {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make sure the AIbox container takes full width */
+.SIGBox .AIbox {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive design - matching AgenticPokeSearch breakpoints */
+@media (max-width: 1100px) {
+  .SIGMainPage {
+    padding: 30px 15px;
+  }
+  
+  .SIGTitle {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .sigText {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+  
+  .imageDisplayBox {
+    max-width: 100%;
+    height: 700px;
+    margin-bottom: 30px;
+  }
+  
+  .SIGBox {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .SIGBox > div {
+    padding: 20px;
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .SIGMainPage {
+    padding: 20px 10px;
+  }
+  
+  .SIGTitle {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+  
+  .sigText {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+  
+  .imageDisplayBox {
+    max-width: 100%;
+    height: 600px;
+    margin-bottom: 25px;
+  }
+  
+  .SIGBox > div {
+    padding: 15px;
+    min-height: 120px;
+  }
+}
+
+/* Animation for content loading */
+.SIGBox > div {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.imageDisplayBox {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus states for accessibility */
+.SIGBox:focus-within {
+  outline: 3px solid #c7ff19;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .SIGMainPage {
+    background: white;
+    padding: 0;
+  }
+  
+  .imageDisplayBox {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+  
+  .SIGBox {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+}

@@ -1,0 +1,206 @@
+/* PoemJokeDemo Component Styles - Matching HomePage and Navigation design */
+
+/* Main container */
+.PJDMainBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Main title styling - matching HomePage Title */
+.PJDMainBox h1 {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin: 0 0 40px 0;
+  line-height: 1.05;
+  color: #111;
+  text-align: center;
+}
+
+/* Container for both Poem and Joke sections */
+.PoemBox,
+.JokeBox {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.PoemBox:hover,
+.JokeBox:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Section headers - matching Navigation button style */
+.PoemBox h2,
+.JokeBox h2 {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  color: #fff;
+  background: #111;
+  margin: 0;
+  padding: 20px 30px;
+  border-bottom: 4px solid #c7ff19;
+}
+
+/* Section descriptions - matching HomePage SubTitle */
+.PoemBox h3,
+.JokeBox h3 {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #444;
+  font-weight: 400;
+  margin: 0;
+  padding: 20px 30px;
+  background: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Content area styling */
+.PoemBox > div,
+.JokeBox > div {
+  padding: 30px;
+  background: #fff;
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure input sections span full width */
+.PoemBox .InputSection,
+.JokeBox .InputSection {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make sure the AIbox container takes full width */
+.PoemBox .AIbox,
+.JokeBox .AIbox {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive design - matching HomePage breakpoints */
+@media (max-width: 1100px) {
+  .PJDMainBox {
+    padding: 30px 15px;
+  }
+  
+  .PJDMainBox h1 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .PoemBox,
+  .JokeBox {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .PoemBox h2,
+  .JokeBox h2 {
+    font-size: 1.6rem;
+    padding: 15px 20px;
+  }
+  
+  .PoemBox h3,
+  .JokeBox h3 {
+    font-size: 0.9rem;
+    padding: 15px 20px;
+  }
+  
+  .PoemBox > div,
+  .JokeBox > div {
+    padding: 20px;
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .PJDMainBox {
+    padding: 20px 10px;
+  }
+  
+  .PJDMainBox h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+  
+  .PoemBox h2,
+  .JokeBox h2 {
+    font-size: 1.4rem;
+    padding: 12px 15px;
+  }
+  
+  .PoemBox h3,
+  .JokeBox h3 {
+    font-size: 0.85rem;
+    padding: 12px 15px;
+  }
+  
+  .PoemBox > div,
+  .JokeBox > div {
+    padding: 15px;
+    min-height: 120px;
+  }
+}
+
+/* Animation for content loading */
+.PoemBox > div,
+.JokeBox > div {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus states for accessibility */
+.PoemBox:focus-within,
+.JokeBox:focus-within {
+  outline: 3px solid #c7ff19;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .PJDMainBox {
+    background: white;
+    padding: 0;
+  }
+  
+  .PoemBox,
+  .JokeBox {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+  
+  .PoemBox h2,
+  .JokeBox h2 {
+    background: #f0f0f0;
+    color: #111;
+    border-bottom: 2px solid #111;
+  }
+}

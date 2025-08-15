@@ -45,28 +45,32 @@ h2 {
     text-align: left; 
 }
   
-.input-section {
+.InputSection {
     display: flex; 
     gap: 10px; 
     margin-top: 10px; 
-    align-items: center; 
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
 }
   
-.input-section input {
-    width: 80%; 
+.InputSection input {
+    flex: 1;
     padding: 10px; 
     font-size: 16px; 
     border: 1px solid #ccc; 
     border-radius: 8px; 
-    outline: none; 
+    outline: none;
+    min-width: 0;
+    box-sizing: border-box;
 }
   
-.input-section input:disabled {
+.InputSection input:disabled {
     background-color: #e0e0e0; 
     cursor: not-allowed;
 }
   
-.input-section button {
+.InputSection button {
     padding: 10px 20px; 
     font-size: 16px; 
     background-color: #007bff; 
@@ -74,17 +78,20 @@ h2 {
     border: none;
     border-radius: 8px; 
     cursor: pointer;
-    transition: background-color 0.3s; 
+    transition: background-color 0.3s;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-sizing: border-box;
 }
   
 
-.input-section button:disabled {
+.InputSection button:disabled {
     background-color: #b0b0b0; 
     cursor: not-allowed;
 }
   
 
-.input-section button:hover {
+.InputSection button:hover {
     background-color: #0056b3; 
 }
   

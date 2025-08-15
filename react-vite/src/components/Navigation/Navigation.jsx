@@ -41,10 +41,10 @@ export default function Navigation(){
                 <button className="dropbtn">ADV Demos</button>
                 <div className="dropdown-content">
                     <NavLink className="navBarDI" to="/dataBaseIntegrationDemo" >
-                        DataBase Integration
+                        Pokemon Finder
                     </NavLink>
                     <NavLink className="navBarPoke" to="/agenticPokemonSearch" >
-                        Agentic Search 
+                        Intelligent Query 
                     </NavLink>
                     <NavLink className="navBarSIG" to="/simpleImageGeneration" >
                         Simple Image Gen 

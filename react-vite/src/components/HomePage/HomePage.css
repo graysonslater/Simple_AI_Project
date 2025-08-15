@@ -1,0 +1,188 @@
+body {
+  background: #fff !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main flex row: left white box, right info boxes */
+.MainPage {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  min-height: 100vh;
+  box-sizing: border-box;
+  gap: 0;
+  padding: 0;
+}
+
+/* White left panel — for main title */
+.WhitePanel {
+  background: #fff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 60px 42px 60px 54px;
+  border-radius: 0;
+  min-width: 520px;
+  min-height: 400px;
+  box-shadow: none;
+  border-right: none; /* REMOVE the line between panels */
+}
+
+.Title {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 4.6rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin: 0;
+  line-height: 1.05;
+  color: #111;
+}
+
+.SubTitle {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  margin-top: 28px;
+  color: #444;
+  font-weight: 400;
+  max-width: 430px;
+}
+
+/* Right-side containers for the two boxes */
+.ContentColumn {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  min-height: 400px;
+}
+
+/* Both info boxes: SAME SIZE and style except color */
+.TextBox, .TextBox.greenVariant {
+  width: 340px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 0;
+  border: none;
+  padding: 36px 24px;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* Black box with white text */
+.TextBox {
+  background: #111;
+  color: #fff;
+}
+
+/* Neon green box with black text */
+.TextBox.greenVariant {
+  background: #c7ff19;
+  color: #111;
+}
+
+/* No gutter, no colored lines between the two info boxes */
+.TextBox + .TextBox,
+.TextBox + .TextBox.greenVariant,
+.TextBox.greenVariant + .TextBox {
+  margin-left: 0;
+  border-left: none;
+}
+
+/* Responsive layout */
+@media (max-width: 1100px) {
+  .MainPage {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .WhitePanel {
+    min-width: unset;
+    width: 100%;
+    padding: 44px 12px 32px 12px;
+    border-right: none;
+    border-bottom: 4px solid #c7ff19;
+    min-height: unset;
+  }
+  .ContentColumn {
+    flex-direction: column;
+    width: 100%;
+    min-height: unset;
+  }
+  .TextBox, .TextBox.greenVariant {
+    width: 100%;
+    min-width: unset;
+    height: 140px;
+    padding: 18px 8px;
+    border-left: none !important;
+    border-top: 2px solid #fff;
+  }
+  .TextBox + .TextBox,
+  .TextBox + .TextBox.greenVariant,
+  .TextBox.greenVariant + .TextBox {
+    margin-left: 0;
+    border-left: none !important;
+  }
+}
+
+.TextBox.greenVariant {
+  position: relative; /* needed for absolutely positioning child */
+  background: #c7ff19;
+  color: #111;
+}
+
+/* Note header positioning and bold style */
+.noteHeader {
+  position: absolute;
+  top: 12px;
+  right: 250px;
+  font-weight: 700;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.ContentColumn {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  min-height: 400px;
+  margin-left: auto; /* pushes the entire ContentColumn to far right */
+  margin-right: 0;   /* ensures no margin on the right */
+}
+
+@media (max-width: 1100px) {
+  .MainPage {
+    flex-direction: column;
+    align-items: center; /* center everything instead of stretch */
+  }
+
+  .WhitePanel {
+    min-width: 520px; /* keep original width */
+    padding: 44px 12px 32px 12px;
+    border-right: none;
+    border-bottom: none;
+    min-height: 400px; /* keep original height */
+  }
+
+  .ContentColumn {
+    flex-direction: row; /* keep boxes side-by-side under rectangle */
+    justify-content: center;
+    gap: 0;
+    width: auto;
+    min-height: 400px;
+  }
+
+  .TextBox, .TextBox.greenVariant {
+    width: 340px;  /* original fixed width */
+    height: 400px; /* original fixed height */
+    padding: 36px 24px;
+    border-left: none !important;
+    border-top: none;
+  }
+}

@@ -1,0 +1,176 @@
+/* AgenticPokeSearch Component Styles - Matching DatabaseIntegrationDemo design */
+
+/* Main container */
+.AgenticPokeMainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Main title styling - matching DatabaseIntegrationDemo Title */
+.AgenticPokeTitle {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin: 0 0 40px 0;
+  line-height: 1.05;
+  color: #111;
+  text-align: center;
+}
+
+/* Agentic Poke text styling - matching DatabaseIntegrationDemo dbintagrationText style */
+.agenticPokeText {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #444;
+  font-weight: 400;
+  margin: 0 0 40px 0;
+  text-align: center;
+  max-width: 800px;
+  line-height: 1.4;
+}
+
+/* Container for the AI section - matching DatabaseIntegrationDemo box style */
+.AgenticPokeMainPage > div:last-child {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect removed - box will not raise up */
+
+/* Add a header section like DatabaseIntegrationDemo boxes */
+.AgenticPokeMainPage > div:last-child::before {
+  content: 'Advanced Pokemon Finder AI';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+/* Content area styling - matching DatabaseIntegrationDemo content area */
+.AgenticPokeMainPage > div:last-child > div {
+  padding: 30px;
+  background: #fff;
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Ensure input sections span full width */
+.AgenticPokeMainPage .InputSection {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make sure the AIbox container takes full width */
+.AgenticPokeMainPage .AIbox {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive design - matching DatabaseIntegrationDemo breakpoints */
+@media (max-width: 1100px) {
+  .AgenticPokeMainPage {
+    padding: 30px 15px;
+  }
+  
+  .AgenticPokeTitle {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .agenticPokeText {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+  
+  .AgenticPokeMainPage > div:last-child {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .AgenticPokeMainPage > div:last-child > div {
+    padding: 20px;
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .AgenticPokeMainPage {
+    padding: 20px 10px;
+  }
+  
+  .AgenticPokeTitle {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+  
+  .agenticPokeText {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+  
+  .AgenticPokeMainPage > div:last-child > div {
+    padding: 15px;
+    min-height: 120px;
+  }
+}
+
+/* Animation for content loading */
+.AgenticPokeMainPage > div:last-child > div {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus states for accessibility */
+.AgenticPokeMainPage > div:last-child:focus-within {
+  outline: 3px solid #c7ff19;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .AgenticPokeMainPage {
+    background: white;
+    padding: 0;
+  }
+  
+  .AgenticPokeMainPage > div:last-child {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+}

@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { thunkLogin, demoLogin } from "../../../redux/session";
 import { LoginModalHTML } from "./LoginModalHTML";
+import "./LoginModal.css";
 
 
 export default function LoginModal(){

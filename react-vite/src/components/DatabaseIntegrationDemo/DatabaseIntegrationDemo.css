@@ -1,0 +1,208 @@
+/* DatabaseIntegrationDemo Component Styles - Matching PoemJokeDemo design */
+
+/* Main container */
+.DBMainPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background: #fff;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+/* Main title styling - matching PoemJokeDemo Title */
+.DBMainPage h1 {
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin: 0 0 40px 0;
+  line-height: 1.05;
+  color: #111;
+  text-align: center;
+}
+
+/* Subtitle styling - matching HomePage SubTitle */
+.DBMainPage h2 {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1.1rem;
+  color: #444;
+  font-weight: 400;
+  margin: 0 0 40px 0;
+  text-align: center;
+  max-width: 800px;
+  line-height: 1.4;
+}
+
+/* DB Integration text styling - matching PoemJokeDemo h3 style */
+.dbintagrationText {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #444;
+  font-weight: 400;
+  margin: 0;
+  padding: 20px 30px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Pokemon Finder AI section title */
+.DBMainPage h2:last-of-type {
+  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  color: #444;
+  font-weight: 400;
+  margin: 0;
+  padding: 20px 30px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Container for the AI section - matching PoemJokeDemo box style */
+.DBMainPage > div:last-child {
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 40px;
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect removed - box will not raise up */
+
+/* Add a header section like PoemJokeDemo boxes */
+.DBMainPage > div:last-child::before {
+  content: 'Pokemon Finder AI';
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 60px;
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+/* Content area styling - matching PoemJokeDemo content area */
+.DBMainPage > div:last-child > div {
+  padding: 30px;
+  background: #fff;
+  min-height: 200px;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Ensure input sections span full width */
+.DBMainPage .InputSection {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Make sure the AIbox container takes full width */
+.DBMainPage .AIbox {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive design - matching PoemJokeDemo breakpoints */
+@media (max-width: 1100px) {
+  .DBMainPage {
+    padding: 30px 15px;
+  }
+  
+  .DBMainPage h1 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+  }
+  
+  .DBMainPage h2 {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+  
+  .DBMainPage h2:last-of-type {
+    font-size: 1.6rem;
+    margin-bottom: 25px;
+  }
+  
+  .DBMainPage > div:last-child {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .DBMainPage > div:last-child > div {
+    padding: 20px;
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .DBMainPage {
+    padding: 20px 10px;
+  }
+  
+  .DBMainPage h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+  
+  .DBMainPage h2 {
+    font-size: 1rem;
+    margin-bottom: 25px;
+  }
+  
+  .DBMainPage h2:last-of-type {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  
+  .DBMainPage > div:last-child > div {
+    padding: 15px;
+    min-height: 120px;
+  }
+}
+
+/* Animation for content loading */
+.DBMainPage > div:last-child > div {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Focus states for accessibility */
+.DBMainPage > div:last-child:focus-within {
+  outline: 3px solid #c7ff19;
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .DBMainPage {
+    background: white;
+    padding: 0;
+  }
+  
+  .DBMainPage > div:last-child {
+    box-shadow: none;
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+}

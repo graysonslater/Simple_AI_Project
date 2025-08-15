@@ -20,16 +20,12 @@ function CustomModal ({children, onClose=()=>{return}}){
     <div
         onClick={(e) => e.stopPropagation()}
         style={{
-            background: "white",
-            maxHeight: "90vh", // Maximum height of 90% of the viewport height
-            maxWidth: "90vw", // Maximum width of 90% of the viewport width
+            background: "transparent",
+            maxHeight: "90vh",
+            maxWidth: "90vw",
             margin: "auto",
-            padding: "2%",
-            border: "2px solid #000",
-            borderRadius: "10px",
-            boxShadow: "2px 2px 10px rgba(0,0,0,0.3)",
             zIndex: 10000,
-            overflow: "auto", // Add scrollbars if content exceeds max dimensions
+            overflow: "auto",
         }}
     >
         {children}
