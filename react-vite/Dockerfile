@@ -1,4 +1,5 @@
 # Exposed port must be the same as the port defined in your code
+# You must be in the react-vite folder when running the docker build commands!
 
 FROM node:18.20.5
 

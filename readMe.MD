@@ -107,6 +107,11 @@ Unfortunately the response times of the AI being used can take up to 1 or 2 minu
 
 * b64encode is a bytes object. .decode('utf-8') converts this bytes object into a regular string, making it suitable for inclusion in JSON responses or for display in web pages
 
+* openai library uses httpx under the hood
+    * if the  version of the httpx library installed in your Docker container is too old or incompatible you will get a type error!
+
+* carefull when importing API keys into the back end - importing the keys into the app/__init__.py folder can cause a circular import error if I have them imported into the app/api/ai_route.py component 
+
 ## Backend Installation
 
 1. clone repository and open a WSL terminal
@@ -152,7 +157,7 @@ Unfortunately the response times of the AI being used can take up to 1 or 2 minu
 
 3. To run the front end server locally, run ```npm run dev```
 
-## Requirements 
+## Requirements.txt (backend)
 
     -i https://pypi.org/simple 
 
@@ -310,7 +315,7 @@ Loads environment variables from a .env file to manage app configuration securel
 
 A fast, modern HTTP client for Python with sync and async support, used for making API requests.
 
-## React-Vite dependencies
+## Pipfile (frontend)
 
     js-cookie
 
