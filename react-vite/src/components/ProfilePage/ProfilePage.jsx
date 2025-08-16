@@ -5,7 +5,7 @@ import EditUserModal from "../Modals/EditUserModal/EditUserModal";
 import DeleteUserModal from "../Modals/DeleteUserModal/DeleteUserModal";
 import MonsterImage from "../AiAssistant/MonsterImage";
 import DeleteAIMonster from "../Modals/DeleteAiMonsterModal/DeleteAiMonsterModal";
-import "./Profilepage.css"
+import "./ProfilePage.css"
 
 export default function ProfilePage(){
     const navigate = useNavigate();
