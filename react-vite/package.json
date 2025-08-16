@@ -4,11 +4,10 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --no-open --host",
-    "build": "vite build --watch",
-    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "dev": "vite",
+    "build": "vite build",
     "preview": "vite preview",
-    "docker": "npm run dev" 
+    "start": "vite preview --port 5173 --host 0.0.0.0"
   },
   "dependencies": {
     "bootstrap": "^5.3.6",
