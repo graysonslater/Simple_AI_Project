@@ -13,7 +13,7 @@ export default function LogoutModal(){
 
 
     //grab current user data 
-    const user = useSelector((state) => {return state.session.user});
+    // const user = useSelector((state) => {return state.session.user});
     // console.log("LOGOUT MODAL useSelector= ", "USER= ", user)
 
 
@@ -36,13 +36,16 @@ export default function LogoutModal(){
     //The html that will appear inside the modal once it pops up
     const LogOutModalHTML = () => { 
         return (
-            <div className="LoginButton">
+            <div className="LogOutButton">
                 {showLogout && (
                     <CustomModal onClose={(e) => logoutToggle(e)}>
-                        <p>Are you sure you want to logout?</p>
-                        <div className="buttonContainer">
-                            <button onClick={handleLogout}>Logout</button>
-                            <button onClick={logoutToggle}>Cancel</button>
+                        <h2>LOGOUT CONFIRMATION</h2>
+                        <div>
+                            <p>Are you sure you want to logout?</p>
+                            <div className="buttonContainer">
+                                <button onClick={handleLogout}>Logout</button>
+                                <button onClick={logoutToggle}>Cancel</button>
+                            </div>
                         </div>
                     </CustomModal>
                 )}

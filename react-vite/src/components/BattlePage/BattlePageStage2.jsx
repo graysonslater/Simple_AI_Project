@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setUserMonster, getOpponentMonster } from "../../redux/AImonsters";
+import {  getOpponentMonster } from "../../redux/AImonsters";
 
 export default function BattlePageStage2({
         chosenMonster,

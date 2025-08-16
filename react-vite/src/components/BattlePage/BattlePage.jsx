@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { getOpponentMonster, resetOpponentMonster, getUsersMonster } from "../../redux/AImonsters";
+import {  resetOpponentMonster } from "../../redux/AImonsters";
 import BattlePageStage2 from "./BattlePageStage2";
 import MonsterImageBattlePage from "../AiAssistant/MonsterImageBattlePage";
 import "./BattlePage.css"
@@ -9,9 +9,6 @@ import "./BattlePage.css"
 export default function BattlePage(){
     const dispatch = useDispatch()
     const [chosenMonster, setChosenMonster ] = useState()
-    const [userMonsterHealth, setuserMonsterHealth ] = useState(111)
-    const [oppMonsterHealth, setoppMonsterHealth ] = useState()
-    const [healthCheck, setHealthCheck] = useState(false);
     
     // Individual state variables for each monster
     const [monster1, setMonster1] = useState(null);
@@ -71,19 +68,6 @@ export default function BattlePage(){
             });
         }
     }, [user]);
-
-    
-
-    const handleOpponentMonster = async () => {
-        const oppMon = await dispatch(getOpponentMonster());
-        // const userMon = await dispatch(getUsersMonster(chosenMonster))
-        setoppMonsterHealth(oppMon.health);
-        setuserMonsterHealth(111);
-        
-        setHealthCheck(false);
-        
-    };
-// TEST comment
 
     return (
         <div className="BattlePageMainBox">

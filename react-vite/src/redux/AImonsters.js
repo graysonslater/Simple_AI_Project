@@ -1,5 +1,5 @@
 // deletes AI gnerated monster
-export const deleteAiMonster = (monster_id) => async (dispatch) => {
+export const deleteAiMonster = (monster_id) => async () => {
     const response = await fetch(`/api/images/delete_ai_monster/${monster_id}`, {
         method: "DELETE",
         headers: { "Context-Type": "application/json" },

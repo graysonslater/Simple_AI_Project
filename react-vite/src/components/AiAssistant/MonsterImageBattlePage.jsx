@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 
 export default function MonsterImageBattlePage({ 
     // Variables passed in from parent component
@@ -77,7 +76,7 @@ export default function MonsterImageBattlePage({
             setuserMonsterHealth(999);
             console.log("USERMON HP after= ", userMonsterHealth)
         };
-    };
+    }
 
 
     function userAttack(){
@@ -94,7 +93,7 @@ export default function MonsterImageBattlePage({
             setuserMonsterHealth(999);
             console.log("MBP USERATT TEST 2")
         };
-    };
+    }
 
 
     if (!imgSrc) return <div>Loading...</div>;

@@ -27,10 +27,10 @@ const deleteUser = () => ({
 })
 
 const SET_AIMON = 'session/getUsersAiMonsters'
-const getAiMon = (monsters) => ({
-  type: SET_AIMON,
-  payload: monsters
-})
+// const getAiMon = (monsters) => ({
+//   type: SET_AIMON,
+//   payload: monsters
+// })
 
 
 //autherize
