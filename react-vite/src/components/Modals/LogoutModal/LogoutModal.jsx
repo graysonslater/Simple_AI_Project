@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { thunkLogout } from "../../../redux/session";
 import CustomModal from "../../../context/CustomModal";
-import "./LogoutModal.css";
+import "./logoutModal.css";
 
 
 export default function LogoutModal(){

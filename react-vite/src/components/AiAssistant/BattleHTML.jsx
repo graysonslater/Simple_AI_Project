@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import MonsterImageBattlePage from "../AiAssistant/MonsterImageBattlePage";
-import "./BattlePage.css"
+import "./AI.css"
 
 
 export default function BattlePage(){
