@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Ai.css"; 
+import "./AI.css"; 
 
 export default function AutoResponse(){
 

@@ -15,7 +15,7 @@ export default defineConfig((mode) => ({
     //configures ESlint plugin
     eslintPlugin({
       //runs ESLint when Vite starts
-      lintOnStart: true,
+      lintOnStart: false,
       //build fails on ESLint errors only in production mode
       failOnError: false,
     }),
