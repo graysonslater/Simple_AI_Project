@@ -1,4 +1,4 @@
-import JokeComponent from "../AiAssistant/jokes";
+import JokeComponent from "../AiAssistant/Jokes";
 import PoemComponent from "../AiAssistant/Poems";
 import "./PoemJokeDemo.css";
 
