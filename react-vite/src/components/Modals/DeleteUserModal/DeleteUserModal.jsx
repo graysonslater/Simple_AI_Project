@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import CustomModal from "../../../context/CustomModal";
 import { thunkDeleteUser } from "../../../redux/session"; 
+import './DeleteUserModal.css'
 
 export default function DeleteUserModal({user}) {
 

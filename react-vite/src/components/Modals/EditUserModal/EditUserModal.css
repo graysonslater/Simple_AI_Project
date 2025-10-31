@@ -3,3 +3,100 @@
    font-size: small; 
    margin-top: -5px; 
 }
+
+/* Make the black bar sit flush with the white modal box */
+.ProfileUserEditTitle {
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 30px;
+  margin: 0;                /* ✅ remove any margin gap */
+  background: #111;
+  border-bottom: 4px solid #c7ff19;
+  color: #fff;
+  font-family: 'Oswald','Arial Narrow',Arial,Helvetica,sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  box-sizing: border-box;
+}
+
+/* Ensure the white box connects seamlessly */
+.ProfileUserEditButtons {
+  background: #fff;
+  border-top: none;          /* ✅ no extra border gap */
+  margin: 0;                 /* ✅ align directly under the header */
+  padding: 24px 30px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Remove default modal inner spacing if any */
+.EditModalMainBox .CustomModal,
+.EditModalMainBox .ModalContent,
+.EditModalMainBox .ModalInner {
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Buttons row alignment */
+.ProfileUserEditButtons {
+  background: #fff;
+  border-top: none;
+  margin: 0;
+  padding: 24px 30px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: row;   /* stack inputs */
+  gap: 16px;
+}
+
+/* Group the last two buttons horizontally */
+.ProfileUserEditButtons > button {
+  align-self: flex-start;   /* align with labels */
+  padding: 12px 22px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+  font-family: 'Oswald','Arial Narrow',Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-top: 10px;
+}
+
+/* Put Confirm + Cancel on one line */
+.ProfileUserEditButtons > button:nth-last-of-type(2) {
+  margin-right: 10px;       /* space between buttons */
+}
+
+.ProfileUserEditButtons > button:last-of-type {
+  background: #fff;
+  color: #111;
+  border: 1px solid #111;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.ProfileUserEditButtons > button:hover {
+  background: #333;
+  color: #fff;
+}
+

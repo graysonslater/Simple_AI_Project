@@ -1,150 +1,136 @@
-/* Logout Modal Styling - Matching SignUp Modal Design */
-.LogOutButton {
-  display: flex;
-  align-items: center;
+/* ===== Trigger button (unchanged) =================================== */
+.LogOutButton { display: flex; align-items: center; }
+
+.logoutToggleButton{
+  font-family:'Oswald','Arial Narrow',Arial,Helvetica,sans-serif;
+  font-weight:900; text-transform:uppercase; letter-spacing:-0.04em;
+  font-size:1.2rem; color:#111; background:none; border:2px solid transparent;
+  padding:12px 20px; border-radius:0; cursor:pointer; transition:all .2s ease;
+}
+.logoutToggleButton:hover{ background:#c7ff19; border-color:#111; color:#111; }
+
+/* ===== Reset unknown modal wrappers so our card is flush ============ */
+.LogOutButton [role="dialog"],
+.LogOutButton .CustomModal,
+.LogOutButton .modal,
+.LogOutButton .modal-content{
+  background:transparent !important;
+  padding:0 !important;
+  border:0 !important;
+  box-shadow:none !important;
+  width:auto; max-width:none;
 }
 
-.logoutToggleButton {
-  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.04em;
-  font-size: 1.2rem;
-  color: #111;
-  background: none;
-  border: 2px solid transparent;
-  padding: 12px 20px;
-  border-radius: 0;
-  cursor: pointer;
-  transition: all 0.2s ease;
+/* ===== Card header (black bar + lime divider) ======================= */
+.LogOutButton h2{
+  display:block; width:min(92vw,720px); margin:0 auto;
+  background:#111; color:#fff;
+  font-family:'Oswald','Arial Narrow',Arial,Helvetica,sans-serif;
+  font-size:2.2rem; font-weight:900; text-transform:uppercase; letter-spacing:-0.04em;
+  padding:12px 30px; text-align:center; position:relative;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.LogOutButton h2::after{
+  content:""; position:absolute; left:0; bottom:0; width:100%; height:4px; background:#c7ff19;
 }
 
-.logoutToggleButton:hover {
-  background-color: #c7ff19;
-  border: 2px solid #111;
-  color: #111;
+/* ===== Card body (white panel under header) ========================= */
+.LogOutButton h2 + div{
+  background:#fff; width:min(92vw,720px); margin:0 auto;
+  padding:40px 30px; box-shadow:0 4px 20px rgba(0,0,0,.1); box-sizing:border-box;
+  border-top:1px solid #e0e0e0;
+}
+.LogOutButton h2 + div > p{
+  margin:0 0 30px 0; text-align:center;
+  font-family:'Roboto Mono','Courier New',Courier,monospace; font-size:1.1rem; color:#111; line-height:1.5;
 }
 
-/* Modal Content Styling - Target the actual modal elements */
-.LogOutButton .CustomModal {
-  background: white;
-  padding: 0;
-  border-radius: 0;
-  border: 2px solid #111;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  max-width: 500px;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
+/* ===== Buttons row ================================================== */
+.LogOutButton .buttonContainer{
+  display:flex; justify-content:center; align-items:center; gap:12px; margin-top:10px;
+}
+.LogOutButton .buttonContainer button{
+  min-width:120px; padding:12px 22px; line-height:1;
+  font-family:'Oswald','Arial Narrow',Arial,Helvetica,sans-serif;
+  font-weight:900; text-transform:uppercase; letter-spacing:-0.04em; font-size:1.1rem;
+  border-radius:0; cursor:pointer; transition:transform .2s, box-shadow .2s, background .2s, color .2s, border-color .2s;
+  border:2px solid #111; background:none; color:#111;
+}
+.LogOutButton .buttonContainer button:first-child{
+  background:#ff4444; border-color:#ff4444; color:#fff;
+}
+.LogOutButton .buttonContainer button:first-child:hover{
+  background:#cc0000; border-color:#cc0000; color:#fff;
+}
+.LogOutButton .buttonContainer button:hover{
+  background:#c7ff19; border-color:#111; color:#111;
+}
+.LogOutButton .buttonContainer button:focus-visible{
+  outline:3px solid #c7ff19; outline-offset:2px;
 }
 
-/* Black Header Bar */
-.LogOutButton .CustomModal h2 {
-  background: #111;
-  color: white;
-  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
-  font-size: 2.2rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.04em;
-  margin: 0;
-  padding: 12px 30px;
-  text-align: center;
+/* ===== Responsive =================================================== */
+@media (max-width:480px){
+  .LogOutButton h2,
+  .LogOutButton h2 + div{ width:94vw; padding-left:16px; padding-right:16px; }
+  .LogOutButton .buttonContainer{ flex-direction:column; }
+  .LogOutButton .buttonContainer button{ width:100%; padding:10px 14px; }
+}
+
+.LogOutButton h2,
+.LogOutButton h2 + div {
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 720px);
+  margin: 0;                 /* no auto-centering via margins */
+  box-sizing: border-box;    /* keep padding inside width */
 }
 
-/* Green Line Under Header */
-.LogOutButton .CustomModal h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: #c7ff19;
+.LogOutButton h2{
+  display:block;
+  width:min(92vw,720px);
+  /* margin:0 auto;  <-- remove this */
+  margin:0;
+  background:#111;
+  color:#fff;
+  font-family:'Oswald','Arial Narrow',Arial,Helvetica,sans-serif;
+  font-size:2.2rem;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:-0.04em;
+  padding:12px 30px;
+  text-align:center;
+  position:relative; /* for ::after */
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.LogOutButton h2::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:0;
+  width:100%; height:4px;
+  background:#c7ff19;
 }
 
-/* Modal Content */
-.LogOutButton .CustomModal > div {
-  padding: 40px;
-  text-align: center;
+/* Body */
+.LogOutButton h2 + div{
+  background:#fff;
+  width:min(92vw,720px);
+  /* margin:0 auto;  <-- remove this */
+  margin:0;
+  padding:40px 30px;
+  box-shadow:0 4px 20px rgba(0,0,0,.1);
+  box-sizing:border-box;
+  border-top:1px solid #e0e0e0;
 }
 
-.LogOutButton .CustomModal p {
-  font-family: 'Roboto Mono', 'Courier New', Courier, monospace;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #111;
-  margin: 0 0 30px 0;
-  line-height: 1.5;
-  text-align: center;
-}
-
-/* Button Container */
-.LogOutButton .buttonContainer {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-.LogOutButton .buttonContainer button {
-  font-family: 'Oswald', 'Arial Narrow', Arial, Helvetica, sans-serif;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.04em;
-  font-size: 1.1rem;
-  color: #111;
-  background: none;
-  border: 2px solid #111;
-  padding: 14px 24px;
-  border-radius: 0;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 120px;
-}
-
-.LogOutButton .buttonContainer button:hover {
-  background-color: #c7ff19;
-  border-color: #111;
-  color: #111;
-}
-
-.LogOutButton .buttonContainer button:first-child {
-  background-color: #dc3545;
-  color: white;
-  border-color: #dc3545;
-}
-
-.LogOutButton .buttonContainer button:first-child:hover {
-  background-color: #c82333;
-  border-color: #c82333;
-  color: white;
-}
-
-/* Responsive Design */
-@media (max-width: 480px) {
-  .LogOutButton .CustomModal {
-    margin: 20px;
-    max-width: calc(100vw - 40px);
-  }
-  
-  .LogOutButton .CustomModal h2 {
-    font-size: 2rem;
-    padding: 15px 20px;
-  }
-  
-  .LogOutButton .CustomModal > div {
-    padding: 30px 20px;
-  }
-  
-  .LogOutButton .buttonContainer {
-    flex-direction: column;
-    padding: 0 20px 30px 20px;
-  }
-  
-  .LogOutButton .buttonContainer button {
-    padding: 10px 14px;
-  }
+/* Use the same centering math for both pieces */
+.LogOutButton h2,
+.LogOutButton h2 + div{
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  box-sizing:border-box;
 }
